@@ -7,7 +7,7 @@ My node version is 19.8.1 <br />
 Download the project to your computer and install needed packages with command:
 
 ```bash
-$ npm install
+$ npm install --legacy-peer-deps
 ```
 Then create .env file:
 ```bash
@@ -43,4 +43,5 @@ $ npm run start:dev
 ```
 
 and you can test api here - http://localhost:8000/
-and you can test api here - http://localhost:8000/api
+
+and you use swagger here - http://localhost:8000/api
