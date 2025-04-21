@@ -1,4 +1,4 @@
 body{
-	@apply bg-green-700;
+	background: linear-gradient(90deg,rgba(15, 127, 171, 1) 0%, rgba(0, 194, 97, 1) 100%);
 	color: white;
 }

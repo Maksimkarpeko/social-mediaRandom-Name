@@ -1,3 +1,5 @@
 .Button {
-	@apply bg-blue-500 text-white py-2 px-3 rounded border-none ;
+	@apply bg-blue-500 text-white py-2 px-3 rounded border-none my-5 ;
+	width: 200px;
+	cursor: pointer;
 }
