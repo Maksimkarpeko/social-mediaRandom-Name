@@ -10,7 +10,10 @@ import { Link } from 'react-router-dom'
 export const SingForm = () => {
 	return (
 		<>
-			<form action="">
+			<form action="" onSubmit={(e) => {
+				e.preventDefault();
+				console.log("");
+			}}>
 				<h1>LOGIN TO ACCOUNT</h1>
 			<div>
 				<h2>UserName</h2>

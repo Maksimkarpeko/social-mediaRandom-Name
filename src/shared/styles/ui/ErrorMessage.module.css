@@ -1,0 +1,9 @@
+.Error {
+	display: block;
+	margin-top: 10px;
+	color: rgb(230, 0, 0);
+	font-weight: bold;
+	width: 285px;
+	white-space: normal;
+	word-break: break-word;
+}
