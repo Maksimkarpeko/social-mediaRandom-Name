@@ -1,35 +1,9 @@
 import axios from 'axios';
-import { store } from '../../../app/App';
 import { IRegistrationState } from '../module/typeFormRegistr';
 
 const MY_BACKEND_LINK = 'http://localhost:8000';
 
-const email = setTimeout(() => {
-	return store
-		.getState()
-		.registrationReducer.registration.map(s => {
-			return s.email;
-		})
-		.join('');
-}, 1);
 
-const password = setTimeout(() => {
-	return store
-		.getState()
-		.registrationReducer.registration.map(s => {
-			return s.password;
-		})
-		.join('');
-}, 1);
-
-const userName = setTimeout(() => {
-	return store
-		.getState()
-		.registrationReducer.registration.map(s => {
-			return s.userName;
-		})
-		.join('');
-}, 1);
 
 export const getUsers = axios.get(`${MY_BACKEND_LINK}/users/me`, {
 	headers: {
@@ -59,12 +33,12 @@ export const addUser = (
 				if (err.response.status === 403) {
 					console.log(err);
 					setSuccess(false);
-					setError('Пользователь уже создан');
+					setError('User already created');
 				}
 			} else {
 				console.log(err);
 				setSuccess(false);
-				setError('Что-то пошло не так с сервером');
+				setError('Something went wrong with the server.');
 			}
 		});
 };

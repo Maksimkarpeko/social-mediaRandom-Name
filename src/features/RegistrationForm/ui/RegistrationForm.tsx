@@ -118,7 +118,7 @@ export const RegistrationForm = () => {
 					Sing In
 				</Link>
 			</p>
-			{success && <p>Пользователь создан</p>}
+			{success && <p>User created</p>}
 			{error && <p className={style.Error}>{error}</p>}
 		</form>
 	);
