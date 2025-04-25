@@ -1,25 +1,28 @@
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-
-import { IRegistration } from '../type/typeFormRegistr';
-
 import {
 	EyeInvisibleOutlined,
 	EyeTwoTone,
 	UserOutlined,
 } from '@ant-design/icons';
 import { Input } from 'antd';
+import { Controller, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../shared/ui/Button';
-import style from '../styles/RegistrationForm.module.css';
 import { ErrorMessage } from '../../../shared/ui/ErrorMessage';
+import { useRegistrForm } from '../lib/hooks/useRegistrForm';
+import style from '../styles/RegistrationForm.module.css';
+
+import { IRegistration } from '../module/typeFormRegistr';
+import { addUser } from '../api/request';
+import { useState } from 'react';
 
 export const RegistrationForm = () => {
-	const { control, handleSubmit } = useForm<IRegistration>({
-		mode: 'onChange',
-	});
+	const [error, setError] = useState<string>('');
+	const [success, setSuccess] = useState<boolean>(false);
+	const { control, handleSubmit } = useRegistrForm();
 	const onSubmit: SubmitHandler<IRegistration> = data => {
-		console.log(data);
+		addUser(data, setSuccess, setError);
 	};
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<h1>CREATE ACCOUNT</h1>
@@ -87,8 +90,7 @@ export const RegistrationForm = () => {
 						required: 'Password is required',
 						pattern: {
 							value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-							message:
-								'Min 6 chars, 1 uppercase, 1 lowercase, 1 number',
+							message: 'Min 6 chars, 1 uppercase, 1 lowercase, 1 number',
 						},
 					}}
 					render={({ field, fieldState }) => (
@@ -116,6 +118,8 @@ export const RegistrationForm = () => {
 					Sing In
 				</Link>
 			</p>
+			{success && <p>Пользователь создан</p>}
+			{error && <p className={style.Error}>{error}</p>}
 		</form>
 	);
 };

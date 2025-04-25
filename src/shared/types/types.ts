@@ -3,3 +3,6 @@ export type InputType = {
 	type:string
 }
 
+export type ClickType = {
+	click?:(event: React.MouseEvent<HTMLButtonElement>) => void
+}
