@@ -3,13 +3,12 @@ import { IRegistrationState } from '../module/typeFormRegistr';
 
 const MY_BACKEND_LINK = 'http://localhost:8000';
 
-
-
 export const getUsers = axios.get(`${MY_BACKEND_LINK}/users/me`, {
 	headers: {
-		Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE1LCJlbWFpbCI6InRlc3Q0QHRlc3Quc2QiLCJ1c2VybmFtZSI6InRlc3Q0IiwiaWF0IjoxNzQ1MzMzMTgxLCJleHAiOjE3NzY4NjkxODF9.qZz9OFwb4SKpjskpfZf6DJh6joGcRpuNdA5kA0fklBE'}`,
+		Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI3LCJlbWFpbCI6InRlc3QxMEB0ZXN0LnRlc3QiLCJ1c2VybmFtZSI6IlRlc3QxMCIsImlhdCI6MTc0NTYxMTM0NywiZXhwIjoxNzc3MTQ3MzQ3fQ.ZVs_6jJzgQZfGQC1c5hFi6ow8lnpzH_nl_K81y1ogqM'}`,
 	},
 });
+
 export const addUser = (
 	data: IRegistrationState,
 	setSuccess: (success: boolean) => void,
@@ -42,8 +41,3 @@ export const addUser = (
 			}
 		});
 };
-
-export const singIn = axios.post(`${MY_BACKEND_LINK}/auth/sign-in`, {
-	email: 'test4@test.sd',
-	password: 'test44',
-});

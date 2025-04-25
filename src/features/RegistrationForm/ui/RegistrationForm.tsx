@@ -20,7 +20,15 @@ export const RegistrationForm = () => {
 	const [success, setSuccess] = useState<boolean>(false);
 	const { control, handleSubmit } = useRegistrForm();
 	const onSubmit: SubmitHandler<IRegistration> = data => {
-		addUser(data, setSuccess, setError);
+		const newData:IRegistration = {
+			email:'',
+			password:'',
+			userName:'',
+		};
+		newData.email = data.email.toLowerCase();
+		newData.userName = data.userName;
+		newData.password = data.password;
+		addUser(newData, setSuccess, setError);
 	};
 
 	return (
