@@ -6,20 +6,20 @@ import {
 import { Input } from 'antd';
 import { Controller, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Button } from '../../../shared/ui/Button';
-import { ErrorMessage } from '../../../shared/ui/ErrorMessage';
-import { useRegistrForm } from '../lib/hooks/useRegistrForm';
+import { Button } from '@UI/Button';
+import { ErrorMessage } from '@UI/ErrorMessage';
+import { useRegistrForm } from '@RegistrationHooks';
 import style from '../styles/RegistrationForm.module.css';
 
-import { IRegistration } from '../module/typeFormRegistr';
-import { addUser } from '../api/request';
+import { IRegistration } from '@RegistrationType';
+import { addUser } from '@RegistrationAPI';
 import { useState } from 'react';
 
 export const RegistrationForm = () => {
 	const [error, setError] = useState<string>('');
 	const [success, setSuccess] = useState<boolean>(false);
 	const { control, handleSubmit } = useRegistrForm();
-	const onSubmit: SubmitHandler<IRegistration> = data => {
+	const onSubmit: SubmitHandler<IRegistration> = (data:IRegistration) => {
 		addUser(data, setSuccess, setError);
 	};
 
@@ -43,7 +43,7 @@ export const RegistrationForm = () => {
 							<Input
 								type='email'
 								placeholder='Email'
-								className={style.InputEmail}
+								className={style.inputEmail}
 								{...field}
 							/>
 							{fieldState.error && (
@@ -68,7 +68,7 @@ export const RegistrationForm = () => {
 					render={({ field, fieldState }) => (
 						<>
 							<Input
-								className={style.InputUserName}
+								className={style.inputUserName}
 								type='text'
 								placeholder='UserName'
 								prefix={<UserOutlined />}
@@ -89,14 +89,14 @@ export const RegistrationForm = () => {
 					rules={{
 						required: 'Password is required',
 						pattern: {
-							value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-							message: 'Min 6 chars, 1 uppercase, 1 lowercase, 1 number',
+						 value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{6,}$/,
+      			message: 'Min 6 chars, 1 uppercase, 1 lowercase, 1 number, 1 special character',
 						},
 					}}
 					render={({ field, fieldState }) => (
 						<>
 							<Input.Password
-								className={style.InputPassword}
+								className={style.inputPassword}
 								type='password'
 								placeholder='password'
 								iconRender={visible =>
@@ -114,12 +114,12 @@ export const RegistrationForm = () => {
 			<Button />
 			<p>
 				Already have an account?{' '}
-				<Link to={'/SingInUser'} className={style.Link}>
+				<Link to={'/SingInUser'} className={style.link}>
 					Sing In
 				</Link>
 			</p>
 			{success && <p>User created</p>}
-			{error && <p className={style.Error}>{error}</p>}
+			{error && <p className={style.error}>{error}</p>}
 		</form>
 	);
 };

@@ -19,6 +19,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@UI/*": ["src/shared/ui/*"],
+      "@RegistrationType":["src/features/RegistrationForm/module/typeFormRegistr.ts"],
+      "@RegistrationAPI":["src/features/RegistrationForm/api/request.ts"],
+      "@RegistrationHooks":["src/features/RegistrationForm/lib/hooks/useRegistrForm.ts"],
+    }
   },
   "include": ["src"]
 }

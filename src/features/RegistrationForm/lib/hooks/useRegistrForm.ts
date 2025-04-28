@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { IRegistration } from '../../module/typeFormRegistr';
+import { IRegistration } from '@RegistrationType';
 
 export const useRegistrForm = () => {
 	return useForm<IRegistration>({
