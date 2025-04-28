@@ -1,5 +1,5 @@
+import { IRegistrationState } from '@RegistrationType';
 import axios from 'axios';
-import { IRegistrationState } from '../module/typeFormRegistr';
 
 const MY_BACKEND_LINK = 'http://localhost:8000';
 

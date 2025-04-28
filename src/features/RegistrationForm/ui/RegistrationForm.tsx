@@ -1,25 +1,24 @@
+import { addUser } from '@RegistrationAPI';
+import { useRegistrForm } from '@RegistrationHooks';
+import { IRegistration } from '@RegistrationType';
+import { Button } from '@UI/Button';
+import { ErrorMessage } from '@UI/ErrorMessage';
 import {
 	EyeInvisibleOutlined,
 	EyeTwoTone,
 	UserOutlined,
 } from '@ant-design/icons';
 import { Input } from 'antd';
+import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Button } from '@UI/Button';
-import { ErrorMessage } from '@UI/ErrorMessage';
-import { useRegistrForm } from '@RegistrationHooks';
 import style from '../styles/RegistrationForm.module.css';
-
-import { IRegistration } from '@RegistrationType';
-import { addUser } from '@RegistrationAPI';
-import { useState } from 'react';
 
 export const RegistrationForm = () => {
 	const [error, setError] = useState<string>('');
 	const [success, setSuccess] = useState<boolean>(false);
 	const { control, handleSubmit } = useRegistrForm();
-	const onSubmit: SubmitHandler<IRegistration> = (data:IRegistration) => {
+	const onSubmit: SubmitHandler<IRegistration> = (data: IRegistration) => {
 		addUser(data, setSuccess, setError);
 	};
 
@@ -89,8 +88,10 @@ export const RegistrationForm = () => {
 					rules={{
 						required: 'Password is required',
 						pattern: {
-						 value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{6,}$/,
-      			message: 'Min 6 chars, 1 uppercase, 1 lowercase, 1 number, 1 special character',
+							value:
+								/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{6,}$/,
+							message:
+								'Min 6 chars, 1 uppercase, 1 lowercase, 1 number, 1 special character',
 						},
 					}}
 					render={({ field, fieldState }) => (

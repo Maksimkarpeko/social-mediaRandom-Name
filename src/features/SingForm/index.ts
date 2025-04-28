@@ -1,2 +1,1 @@
-export {SingForm} from '../SingForm/ui/SingForm.tsx'
-
+export {SingForm} from "../SingForm/ui/SingForm.tsx"
