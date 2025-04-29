@@ -1,11 +1,12 @@
 import {FC} from 'react'
-import { ClickType } from '../lib/types'
+import { ButtonType } from '../lib/types'
 import style from '../styles/ui/Button.module.css'
-export const Button:FC<ClickType> = ({click}) =>{
+import classNames from 'classnames'
+export const Button:FC<ButtonType> = ({text,anotherСlass}) =>{
 	return (
 		<>
-			<button className={style.button} onClick={click}>
-				Submit
+			<button className={classNames(style.button, anotherСlass)}>
+				{text}
 			</button>
 		</>
 	)

@@ -1,5 +1,5 @@
 import {RegistrationForm} from '../../features/RegistrationForm/index'
-export function MainPage() {
+export function RegistrationPage() {
 	return (
 		<>
 			<RegistrationForm/>

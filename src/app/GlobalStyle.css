@@ -1,4 +1,6 @@
 body{
-	background: linear-gradient(90deg,rgba(15, 127, 171, 1) 0%, rgba(0, 194, 97, 1) 100%);
+	background: #006aff;
+	background: linear-gradient(90deg,rgba(0, 106, 255, 0.69) 100%, rgba(242, 242, 242, 1) 100%);
 	color: white;
+	font-family: 'Josefin Sans', sans-serif;
 }

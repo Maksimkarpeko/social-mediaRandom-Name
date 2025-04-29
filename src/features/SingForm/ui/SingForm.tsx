@@ -3,7 +3,11 @@ import { useLoginForm } from '@LoginHooks';
 import { ILogin } from '@LoginType';
 import { Button } from '@UI/Button';
 import { ErrorMessage } from '@UI/ErrorMessage';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import {
+	EyeInvisibleOutlined,
+	EyeTwoTone,
+	LeftOutlined,
+} from '@ant-design/icons';
 import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
@@ -21,6 +25,9 @@ export const SingForm = () => {
 
 	return (
 		<>
+			<Link to={'/'} className={style.backToStartPage}>
+				<LeftOutlined />
+			</Link>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<h1>LOGIN TO ACCOUNT</h1>
 				<div>
@@ -72,10 +79,10 @@ export const SingForm = () => {
 						)}
 					/>
 				</div>
-				<Button />
+				<Button text='Continue' />
 				<p>
 					You do not have an account yet?{' '}
-					<Link to={'/'} className={style.link}>
+					<Link to={'/Registration'} className={style.link}>
 						Register
 					</Link>
 				</p>

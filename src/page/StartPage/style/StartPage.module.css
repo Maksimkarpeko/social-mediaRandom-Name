@@ -1,0 +1,14 @@
+.containerPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 43vw;
+}
+.link {
+	@apply my-4;
+}
+.button{
+	font-size: 25px;
+}
