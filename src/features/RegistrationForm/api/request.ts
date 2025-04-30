@@ -1,7 +1,6 @@
 import { IRegistrationState } from '@registration/module/typeFormRegistr';
+import {axiosRequest} from '@shared/lib/axiosSeting'
 import axios from 'axios';
-
-const MY_BACKEND_LINK = 'http://localhost:8000';
 
 export const addUser = async (
 	data: IRegistrationState,
@@ -9,7 +8,7 @@ export const addUser = async (
 	setError: (error: string) => void
 ) => {
 	try {
-		const res = await axios.post(`${MY_BACKEND_LINK}/auth/sign-up`, {
+		const res = await axiosRequest.post(`/auth/sign-up`, {
 			email: data.email,
 			username: data.userName,
 			password: data.password,
