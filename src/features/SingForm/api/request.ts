@@ -1,7 +1,6 @@
 import { ILogin } from '@login/module/typeLogin';
+import {axiosRequest} from "@shared/lib/axiosSeting"
 import axios from 'axios';
-
-const MY_BACKEND_LINK = 'http://localhost:8000';
 
 export const singIn = async (
 	data: ILogin,
@@ -9,7 +8,7 @@ export const singIn = async (
 	setError: (error: string) => void
 ) => {
 	try {
-		const res = await axios.post(`${MY_BACKEND_LINK}/auth/sign-in`, {
+		const res = await axiosRequest.post(`/auth/sign-in`, {
 			email: data.email,
 			password: data.password,
 		});
