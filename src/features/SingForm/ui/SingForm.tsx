@@ -1,8 +1,8 @@
-import { singIn } from '@LoginAPI';
-import { useLoginForm } from '@LoginHooks';
-import { ILogin } from '@LoginType';
-import { Button } from '@UI/Button';
-import { ErrorMessage } from '@UI/ErrorMessage';
+import { singIn } from '@login/api/request';
+import { useLoginForm } from '@login/hooks/useLogin';
+import { ILogin } from '@login/module/typeLogin';
+import { Button } from '@shared/ui/Button';
+import { ErrorMessage } from '@shared/ui/ErrorMessage';
 import {
 	EyeInvisibleOutlined,
 	EyeTwoTone,

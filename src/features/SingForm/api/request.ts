@@ -1,4 +1,4 @@
-import { ILogin } from '@LoginType';
+import { ILogin } from '@login/module/typeLogin';
 import axios from 'axios';
 
 const MY_BACKEND_LINK = 'http://localhost:8000';

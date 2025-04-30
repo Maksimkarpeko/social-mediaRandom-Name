@@ -1,4 +1,4 @@
-import { SingForm } from '../../features/SingForm/index';
+import { SingForm } from '@login/index';
 export const SingIn = () => {
 	return (
 		<>

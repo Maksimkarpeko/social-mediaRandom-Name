@@ -7,10 +7,11 @@ import './GlobalStyle.css';
 import { Provider } from 'react-redux';
 import { setupStore } from '../providers/store/store';
 import { StartPage } from "../page/StartPage/StartPage";
+import {Links} from "@shared/lib/enumForLink"
 const router = createBrowserRouter([
-	{path:"/",element:<StartPage />},
-	{ path: '/Registration', element: <RegistrationPage /> },
-	{ path: '/SingInUser', element: <SingIn /> },
+	{path:Links[0],element:<StartPage />},
+	{ path: Links[1], element: <RegistrationPage /> },
+	{ path: Links[2], element: <SingIn /> },
 ]);
 
 export const store = setupStore();

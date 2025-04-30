@@ -21,13 +21,9 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "paths": {
-      "@UI/*": ["src/shared/ui/*"],
-      "@RegistrationType":["src/features/RegistrationForm/module/typeFormRegistr.ts"],
-      "@RegistrationAPI":["src/features/RegistrationForm/api/request.ts"],
-      "@RegistrationHooks":["src/features/RegistrationForm/lib/hooks/useRegistrForm.ts"],
-      "@LoginAPI":["src/features/SingForm/api/request.ts"],
-      "@LoginHooks":["src/features/SingForm/hooks/useLogin.ts"],
-      "@LoginType":["src/features/SingForm/module/typeLogin.ts"],
+      "@shared/*":["src/shared/*"],
+      "@registration/*":["src/features/RegistrationForm/*"],
+      "@login/*":["src/features/SingForm/*"],
     }
   },
   "include": ["src"]

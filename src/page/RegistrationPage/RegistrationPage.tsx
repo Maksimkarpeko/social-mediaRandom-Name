@@ -1,4 +1,4 @@
-import {RegistrationForm} from '../../features/RegistrationForm/index'
+import {RegistrationForm} from '@registration/index'
 export function RegistrationPage() {
 	return (
 		<>

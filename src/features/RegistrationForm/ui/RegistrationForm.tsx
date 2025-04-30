@@ -1,14 +1,14 @@
-import { addUser } from '@RegistrationAPI';
-import { useRegistrForm } from '@RegistrationHooks';
-import { IRegistration } from '@RegistrationType';
-import { Button } from '@UI/Button';
-import { ErrorMessage } from '@UI/ErrorMessage';
 import {
 	EyeInvisibleOutlined,
 	EyeTwoTone,
+	LeftOutlined,
 	UserOutlined,
-	LeftOutlined
 } from '@ant-design/icons';
+import { addUser } from '@registration/api/request';
+import { useRegistrForm } from '@registration/lib/hooks/useRegistrForm';
+import { IRegistration } from '@registration/module/typeFormRegistr';
+import { Button } from '@shared/ui/Button';
+import { ErrorMessage } from '@shared/ui/ErrorMessage';
 import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
@@ -25,9 +25,9 @@ export const RegistrationForm = () => {
 
 	return (
 		<>
-		<Link to={'/'} className={style.backToStartPage}>
-			<LeftOutlined />
-		</Link>
+			<Link to={'/'} className={style.backToStartPage}>
+				<LeftOutlined />
+			</Link>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<h1>CREATE ACCOUNT</h1>
 				<div className={style.form}>
