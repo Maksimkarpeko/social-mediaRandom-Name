@@ -1,16 +1,18 @@
+import { Links } from '@shared/lib/enumForLink';
 import { Button } from '@shared/ui/Button';
 import { Link } from 'react-router-dom';
 import style from './style/StartPage.module.css';
-import {Links} from '@shared/lib/enumForLink';
 export const StartPage = () => {
 	return (
 		<>
-			<div className={style.containerPage}>
+			<div className={style.containerLogo}>
 				<h2>Welcome to LinkUp</h2>
-				<Link to={Links[1]} className={style.link}>
+			</div>
+			<div className={style.containerPage}>
+				<Link to={Links.registration} className={style.link}>
 					<Button text='Registration' anotherСlass={style.button} />
 				</Link>
-				<Link to={Links[2]} className={style.link}>
+				<Link to={Links.login} className={style.link}>
 					<Button text='Login' anotherСlass={style.button} />
 				</Link>
 			</div>

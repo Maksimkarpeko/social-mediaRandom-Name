@@ -2,3 +2,54 @@
 .InputPassword {
 	width: 285px;
 }
+.containerLink,
+.containerForm {
+	width: 100vw;
+	height: 100vh;
+}
+.containerLink h2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 83vh;
+	font-size: 50px;
+}
+.containerForm {
+	background-color: rgb(11, 11, 50);
+}
+.formSing {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+}
+.inputPassword {
+	margin-bottom: 1.25rem;
+}
+.link {
+	text-decoration: none;
+	color: rgb(0, 255, 68);
+	transition: 500ms all;
+}
+.link:hover {
+	border-bottom: 2px solid rgb(0, 255, 68);
+	transform: scale(1.05);
+}
+.error {
+	color: red;
+}
+.backToStartPage {
+	text-decoration: none;
+	color: white;
+	transition: 250ms all;
+}
+.backToStartPage:hover {
+	color: rgb(188, 184, 184);
+}
+
+@media (max-width: 768px) {
+	.containerLink {
+		display: none;
+	}
+}

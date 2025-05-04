@@ -9,9 +9,9 @@ import { setupStore } from '../providers/store/store';
 import { StartPage } from "../page/StartPage/StartPage";
 import {Links} from "@shared/lib/enumForLink"
 const router = createBrowserRouter([
-	{path:Links[0],element:<StartPage />},
-	{ path: Links[1], element: <RegistrationPage /> },
-	{ path: Links[2], element: <SingIn /> },
+	{path:Links.home,element:<StartPage />},
+	{ path: Links.registration, element: <RegistrationPage /> },
+	{ path: Links.login, element: <SingIn /> },
 ]);
 
 export const store = setupStore();

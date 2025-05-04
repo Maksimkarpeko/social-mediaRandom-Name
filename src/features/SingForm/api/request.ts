@@ -1,5 +1,5 @@
 import { ILogin } from '@login/module/typeLogin';
-import {axiosRequest} from "@shared/lib/axiosSeting"
+import { axiosRequest } from '@shared/lib/axiosSeting';
 import axios from 'axios';
 
 export const singIn = async (
@@ -13,7 +13,7 @@ export const singIn = async (
 			password: data.password,
 		});
 		if (res.status == 200) {
-			console.log('successful login');
+			localStorage.setItem('token', res.data.access_token);
 			setSuccess(true);
 			setError('');
 		}

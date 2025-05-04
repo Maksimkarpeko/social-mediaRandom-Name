@@ -1,6 +1,14 @@
-body{
-	background: #006aff;
-	background: linear-gradient(90deg,rgba(0, 106, 255, 0.69) 100%, rgba(242, 242, 242, 1) 100%);
+body {
+	background: #1067df;
 	color: white;
 	font-family: 'Josefin Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+#root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
 }
