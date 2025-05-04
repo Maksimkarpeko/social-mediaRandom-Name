@@ -27,11 +27,11 @@
 
 .link {
 	text-decoration: none;
-	color: rgb(0, 255, 68);
+	color: rgb(255, 0, 0);
 	transition: 500ms all;
 }
 .link:hover {
-	border-bottom: 2px solid rgb(0, 255, 68);
+	border-bottom: 2px solid rgb(255, 0, 0);
 	transform: scale(1.05);
 }
 .error {

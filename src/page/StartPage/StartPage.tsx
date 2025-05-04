@@ -7,12 +7,14 @@ export const StartPage = () => {
 		<>
 			<div className={style.containerPage}>
 				<h2>WELCOME TO LINKUP</h2>
+				<span>Do you have account?</span>
 				<Link to={Links.registration} className={style.link}>
-					<Button text='Registration' anotherСlass={style.button} />
+					<Button text='Registration with email' anotherСlass={style.button} />
 				</Link>
 				<Link to={Links.login} className={style.link}>
-					<Button text='Login' anotherСlass={style.button} />
-				</Link>
+					<Button text='Log in to your account' anotherСlass={style.button} />
+				</Link>			
+
 			</div>
 		</>
 	);
