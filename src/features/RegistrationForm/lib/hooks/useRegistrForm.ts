@@ -1,4 +1,4 @@
-import { IRegistration } from '@RegistrationType';
+import { IRegistration } from '@registration/module/typeFormRegistr';
 import { useForm } from 'react-hook-form';
 
 export const useRegistrForm = () => {
