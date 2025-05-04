@@ -5,10 +5,8 @@ import style from './style/StartPage.module.css';
 export const StartPage = () => {
 	return (
 		<>
-			<div className={style.containerLogo}>
-				<h2>Welcome to LinkUp</h2>
-			</div>
 			<div className={style.containerPage}>
+				<h2>WELCOME TO LINKUP</h2>
 				<Link to={Links.registration} className={style.link}>
 					<Button text='Registration' anotherСlass={style.button} />
 				</Link>

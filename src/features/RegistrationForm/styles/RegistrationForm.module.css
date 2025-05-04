@@ -1,22 +1,21 @@
-.containerLink,
-.containerForm {
-	width: 100vw;
-	height: 100vh;
-}
-.containerForm {
-	background-color: rgb(11, 11, 50);
-}
 .inputEmail,
 .inputUserName,
 .inputPassword {
 	width: 285px;
+	border: none;
+	border-bottom: 2px solid rgb(118, 118, 118);
+	border-radius: 0;
 }
 .formRegist {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
+	height: 75%;
+	padding: 20px 43px;
+	border: 1px solid white;
+	border-radius: 20px;
+	background-color: #fff;
 }
 .containerLink h2 {
 	display: flex;
@@ -40,8 +39,9 @@
 }
 .backToStartPage {
 	text-decoration: none;
-	color: white;
+	color: rgb(0, 0, 0);
 	transition: 250ms all;
+	margin-right: 115%;
 }
 .backToStartPage:hover {
 	color: rgb(188, 184, 184);
