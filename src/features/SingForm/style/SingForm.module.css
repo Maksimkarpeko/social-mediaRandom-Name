@@ -54,3 +54,18 @@
 		display: none;
 	}
 }
+@media (max-height: 699px) {
+	.formSing {
+		height: 80vh;
+	}
+}
+@media (max-height: 1300px) and (min-height: 700px) {
+	.formSing {
+		height: 60vh;
+	}
+}
+@media (max-height: 545px) {
+	.formSing {
+		height: 100vh;
+	}
+}
