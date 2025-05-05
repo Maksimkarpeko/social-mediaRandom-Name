@@ -19,6 +19,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*":["src/shared/*"],
+      "@registration/*":["src/features/RegistrationForm/*"],
+      "@login/*":["src/features/SingForm/*"],
+    }
   },
   "include": ["src"]
 }

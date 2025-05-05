@@ -1,0 +1,11 @@
+.button {
+	@apply bg-red-700 text-white py-2 px-3 rounded border-none my-3;
+	width: 285px;
+	cursor: pointer;
+	transition: 500ms all;
+	font-size: 20px;
+	font-family: 'Josefin Sans', sans-serif;
+}
+.button:hover {
+	transform: scale(1.1);
+}
