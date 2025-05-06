@@ -1,9 +1,9 @@
-import { LeftNavBarHome } from '@leftNavBarHome/index'
+import { LeftNavBar} from '@leftNavBarHome/index'
 
 export const HomePage = () => {
 	return(
 		<>
-			<LeftNavBarHome/>
+			<LeftNavBar/>
 		</>
 	)
 } 

@@ -1,1 +1,1 @@
-export {LeftNavBarHome} from "@leftNavBarHome/ui/NavBar"
+export {LeftNavBar} from "@leftNavBarHome/ui/NavBar"

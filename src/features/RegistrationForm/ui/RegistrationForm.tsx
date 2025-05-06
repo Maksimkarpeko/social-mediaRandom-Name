@@ -14,7 +14,7 @@ import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import style from '../styles/RegistrationForm.module.css';
+import style from '../styles/registrationForm.module.css';
 
 export const RegistrationForm = () => {
 	const [error, setError] = useState<string>('');

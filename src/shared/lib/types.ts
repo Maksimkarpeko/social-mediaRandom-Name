@@ -7,3 +7,8 @@ export type ButtonType = {
 	text:string,
 	anotherСlass?:string
 }
+export type LinkType = {
+	img:string,
+	text?:string,
+	width:string,
+}
