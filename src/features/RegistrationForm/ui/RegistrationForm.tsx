@@ -25,9 +25,9 @@ export const RegistrationForm = () => {
 	};
 
 	return (
-		<>
+		<div className={style.div}>
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formRegist}>
-				<Link to={Links.home} className={style.backToStartPage}>
+				<Link to={Links.startPage} className={style.backToStartPage}>
 					<LeftOutlined />
 				</Link>
 				<h1>CREATE ACCOUNT</h1>
@@ -128,6 +128,6 @@ export const RegistrationForm = () => {
 				{success && <p>User created</p>}
 				{error && <p className={style.error}>{error}</p>}
 			</form>
-		</>
+		</div>
 	);
 };

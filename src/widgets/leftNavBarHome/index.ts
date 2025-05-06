@@ -1,0 +1,1 @@
+export {LeftNavBarHome} from "@leftNavBarHome/ui/NavBar"

@@ -8,10 +8,12 @@ import { Provider } from 'react-redux';
 import { setupStore } from '../providers/store/store';
 import { StartPage } from "../page/StartPage/StartPage";
 import {Links} from "@shared/lib/enumForLink"
+import { HomePage } from '../page/HomePage/HomePage';
 const router = createBrowserRouter([
-	{path:Links.home,element:<StartPage />},
+	{path:Links.startPage,element:<StartPage />},
 	{ path: Links.registration, element: <RegistrationPage /> },
 	{ path: Links.login, element: <SingIn /> },
+	{ path: Links.home, element: <HomePage />}
 ]);
 
 export const store = setupStore();

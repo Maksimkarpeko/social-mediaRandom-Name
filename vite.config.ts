@@ -9,6 +9,7 @@ export default defineConfig({
       "@shared":path.resolve(__dirname,"src/shared/"),
       "@registration":path.resolve(__dirname,"src/features/RegistrationForm"),
       "@login":path.resolve(__dirname,"src/features/SingForm"),
+			"@leftNavBarHome":path.resolve(__dirname,"src/widgets/leftNavBarHome")
     },
 	},
 });

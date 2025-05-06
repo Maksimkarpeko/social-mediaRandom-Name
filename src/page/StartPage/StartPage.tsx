@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import style from './style/StartPage.module.css';
 export const StartPage = () => {
 	return (
-		<>
+		<div className={style.div}>
 			<div className={style.containerPage}>
 				<h2>WELCOME TO LINKUP</h2>
 				<span>Do you have account?</span>
@@ -16,6 +16,6 @@ export const StartPage = () => {
 				</Link>			
 
 			</div>
-		</>
+		</div>
 	);
 };

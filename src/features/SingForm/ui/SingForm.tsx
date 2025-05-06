@@ -24,9 +24,9 @@ export const SingForm = () => {
 	};
 
 	return (
-		<>
+		<div className={style.div}>
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formSing}>
-				<Link to={Links.home} className={style.backToStartPage}>
+				<Link to={Links.startPage} className={style.backToStartPage}>
 					<LeftOutlined />
 				</Link>
 				<h1>LOGIN TO ACCOUNT</h1>
@@ -89,6 +89,6 @@ export const SingForm = () => {
 				{error && <p className={style.error}>{error}</p>}
 				{success && <p>successful login</p>}
 			</form>
-		</>
+		</div>
 	);
 };

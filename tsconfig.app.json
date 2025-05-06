@@ -24,6 +24,7 @@
       "@shared/*":["src/shared/*"],
       "@registration/*":["src/features/RegistrationForm/*"],
       "@login/*":["src/features/SingForm/*"],
+      "@leftNavBarHome/*":["src/widgets/leftNavBarHome/*"] 
     }
   },
   "include": ["src"]

@@ -7,11 +7,12 @@
 	border-radius: 0;
 }
 .formRegist {
+	width: 20vw;
+	height: 25vh;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	height: 75%;
 	padding: 20px 43px;
 	border: 1px solid white;
 	border-radius: 20px;
@@ -47,6 +48,19 @@
 	color: rgb(188, 184, 184);
 }
 
+.div {
+	background: url(../../../shared/assets/image13.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
 @media (max-height: 699px) {
 	.formRegist {
 		height: 80vh;
@@ -54,11 +68,42 @@
 }
 @media (max-height: 1300px) and (min-height: 700px) {
 	.formRegist {
-		height: 60vh;
+		height: 68vh;
 	}
 }
 @media (max-height: 545px) {
 	.formRegist {
 		height: 100vh;
+	}
+}
+@media (max-width: 1440px) and (min-width: 1024px) {
+	.formRegist {
+		width: 30vw;
+	}
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+	.formRegist {
+		width: 39vw;
+	}
+}
+
+@media (max-width: 768px) and (min-width: 598px) {
+	.formRegist {
+		width: 50vw;
+	}
+}
+@media (max-width: 598px) and (min-width: 461px) {
+	.formRegist {
+		width: 65vw;
+	}
+}
+@media (max-width: 460px) and (min-width: 399px) {
+	.formRegist {
+		width: 75vw;
+	}
+}
+@media (max-width: 398px) {
+	.formRegist {
+		width: 90vw;
 	}
 }
