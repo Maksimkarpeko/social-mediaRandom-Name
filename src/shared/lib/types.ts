@@ -11,4 +11,5 @@ export type LinkType = {
 	img:string,
 	text?:string,
 	width:string,
+	onClick?:(type:string)=>void
 }

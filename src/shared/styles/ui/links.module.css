@@ -12,3 +12,6 @@
 	cursor: pointer;
 	border-left: 3px solid red;
 }
+.active{
+	border-left: 3px solid red;
+}

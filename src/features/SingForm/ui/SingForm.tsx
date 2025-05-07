@@ -13,14 +13,14 @@ import { ErrorMessage } from '@shared/ui/ErrorMessage';
 import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export const SingForm = () => {
 	const [error, setError] = useState<string>('');
 	const [success, setSuccess] = useState<boolean>(false);
 	const { control, handleSubmit } = useLoginForm();
-
+	const navigate = useNavigate();
 	const onSubmit: SubmitHandler<ILogin> = (data: ILogin) => {
-		singIn(data, setSuccess, setError);
+		singIn(data,navigate, setSuccess, setError);
 	};
 
 	return (
