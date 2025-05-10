@@ -1,7 +1,9 @@
+import { Post } from '../../../features/posts/ui/Post'
+
 export const HomePage = () =>{
 	return(
 		<div>
-			<h2>Home page</h2>
+			<Post/>
 		</div>
 	)
 }

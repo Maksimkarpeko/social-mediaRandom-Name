@@ -7,26 +7,49 @@ import logo from '@shared/assets/logo.png';
 import profile from '@shared/assets/profile_red.png';
 import { Link } from '@shared/ui/Link';
 import { FC } from 'react';
+import { props } from '../module/types';
 import style from '../style/lNavBar.module.css';
-interface props {
-	onNavigate: (type: string) => void;
-}
-export const LeftNavBar: FC<props> = ({ onNavigate }) => {
+export const LeftNavBar: FC<props> = ({ onNavigate, Current }) => {
 	return (
 		<>
 			<div className={style.container}>
 				<div className={style.logo}>
 					<img src={logo} alt='logo' width={'50px'} />
 				</div>
-				<Link text='home' img={home} width={'25px'} onClick={onNavigate} />
-				<Link text='search' img={search} width={'25px'} onClick={onNavigate} />
-				<Link text='create' img={create} width={'25px'} onClick={onNavigate} />
-				<Link text='bell' img={bell} width={'25px'} onClick={onNavigate} />
+				<Link
+					text='home'
+					img={home}
+					width={'25px'}
+					onClick={onNavigate}
+					isActive={Current === 'home'}
+				/>
+				<Link
+					text='search'
+					img={search}
+					width={'25px'}
+					onClick={onNavigate}
+					isActive={Current === 'search'}
+				/>
+				<Link
+					text='create'
+					img={create}
+					width={'25px'}
+					onClick={onNavigate}
+					isActive={Current === 'create'}
+				/>
+				<Link
+					text='bell'
+					img={bell}
+					width={'25px'}
+					onClick={onNavigate}
+					isActive={Current === 'bell'}
+				/>
 				<Link
 					text='profile'
 					img={profile}
 					width={'25px'}
 					onClick={onNavigate}
+					isActive={Current === 'profile'}
 				/>
 				<img src={moon} alt='moon' width={'25px'} />
 			</div>

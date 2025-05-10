@@ -1,7 +1,7 @@
 import { LinkType } from '@shared/lib/types';
 import { FC } from 'react';
 import style from '../styles/ui/links.module.css';
-export const Link: FC<LinkType> = ({ img, text, width, onClick }) => {
+export const Link: FC<LinkType> = ({ img, text, width, onClick,isActive }) => {
 	return (
 		<div className={style.container}>
 			<div
@@ -10,6 +10,7 @@ export const Link: FC<LinkType> = ({ img, text, width, onClick }) => {
 						onClick(text);
 					}
 				}}
+				className={isActive ? style.active : ''}
 			>
 				<img src={img} alt='Pictures' width={width} />
 			</div>

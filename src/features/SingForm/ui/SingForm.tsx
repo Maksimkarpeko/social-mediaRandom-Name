@@ -20,9 +20,8 @@ export const SingForm = () => {
 	const { control, handleSubmit } = useLoginForm();
 	const navigate = useNavigate();
 	const onSubmit: SubmitHandler<ILogin> = (data: ILogin) => {
-		singIn(data,navigate, setSuccess, setError);
+		singIn(data, navigate, setSuccess, setError);
 	};
-
 	return (
 		<div className={style.div}>
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formSing}>
