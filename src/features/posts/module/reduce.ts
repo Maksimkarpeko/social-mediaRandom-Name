@@ -2,14 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IPostState } from '../lib/types';
 
 const initialState: IPostState = {
-	post: {
-		content: '',
-		image: '',
-		user: {
-			name: '',
-			image: '',
-		},
-	},
+	posts: []
 };
 
 export const postSlice = createSlice({
@@ -17,10 +10,7 @@ export const postSlice = createSlice({
 	initialState,
 	reducers: {
 		getPost(state, action) {
-			state.post.content = action.payload.content;
-			state.post.image = action.payload.image;
-			state.post.user = action.payload.username;
-			state.post.user = action.payload.image;
+			state.posts = action.payload;
 		},
 	},
 });

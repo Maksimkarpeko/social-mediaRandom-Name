@@ -1,13 +1,19 @@
-export interface IPost {
+export interface IPosts {
 	content: string;
 	time?: string;
+	isEditable: boolean,
+	isLiked:boolean
 	image: string;
 	user:{
-		name:string,
+		username:string,
 		image:string
 	};
+	_count:{
+		comments:number,
+		likes:number
+	}
 }
 
 export interface IPostState {
-	post:IPost
+	posts:IPosts[]
 }

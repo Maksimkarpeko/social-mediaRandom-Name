@@ -1,25 +1,27 @@
 import { axiosRequest } from '@shared/lib/axiosSeting';
 import { AppDispatch } from '../../../providers/store/store';
 import { postSlice } from '../module/reduce';
+import { IPosts } from '../lib/types';
 
 export const getPost = () => {
 	return async (dispatch: AppDispatch) => {
 		try {
 			const res = await axiosRequest.get('posts');
-			const constent = res.data[0].content;
-			const imgContent = res.data[0].image;
-			dispatch(
-				postSlice.actions.getPost({
-					content: constent,
-					image: imgContent,
-					user: {
-						username: res.data[0].user.username,
-						image: res.data[0].user.image,
-					},
-				})
-			);
-			console.log(res.data);
-			console.log(res.data[0].user);
+			const post = res.data.map((item:IPosts)=>({
+				content:  item.content,
+				image: item.image,
+				isEditable:item.isEditable,
+				isLike:item.isLiked,
+				user: {
+					username: item.user.username,
+					image: item.user.image,
+				},
+				counter : {
+					comments: item._count?.comments ?? 0,
+					like: item._count?.likes ?? 0
+				}
+			}))
+			dispatch(postSlice.actions.getPost(post))
 		} catch (error) {
 			console.log(error);
 		}
