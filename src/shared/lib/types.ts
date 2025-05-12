@@ -15,3 +15,14 @@ export type LinkType = {
 	onClick?:(type:string)=>void,
 	isActive?: boolean,
 }
+
+export type CardType = {
+	userImg:string,
+	userName:string,
+	data?:number,
+	content:string,
+	postImg:string,
+	postLike:number,
+	postComments:number,
+	isLiked?:boolean,
+}

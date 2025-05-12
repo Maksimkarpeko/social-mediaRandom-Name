@@ -7,18 +7,21 @@ export const getPost = () => {
 	return async (dispatch: AppDispatch) => {
 		try {
 			const res = await axiosRequest.get('posts');
+			console.log(res.data);
 			const post = res.data.map((item:IPosts)=>({
-				content:  item.content,
+				id:item.id,
+				content:item.content,
 				image: item.image,
 				isEditable:item.isEditable,
 				isLike:item.isLiked,
+				updatedAt:item.updatedAt,
 				user: {
 					username: item.user.username,
 					image: item.user.image,
 				},
-				counter : {
+				_count : {
 					comments: item._count?.comments ?? 0,
-					like: item._count?.likes ?? 0
+					like: item._count?.likes ?? 0,
 				}
 			}))
 			dispatch(postSlice.actions.getPost(post))

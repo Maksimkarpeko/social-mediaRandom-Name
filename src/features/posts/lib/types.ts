@@ -1,6 +1,7 @@
 export interface IPosts {
+	id?:number,
 	content: string;
-	time?: string;
+	updatedAt?: number;
 	isEditable: boolean,
 	isLiked:boolean
 	image: string;
@@ -9,6 +10,7 @@ export interface IPosts {
 		image:string
 	};
 	_count:{
+		like: number;
 		comments:number,
 		likes:number
 	}

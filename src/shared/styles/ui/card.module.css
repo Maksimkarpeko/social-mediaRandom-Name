@@ -1,0 +1,64 @@
+.container {
+	width: 50vw;
+	margin: 0 auto;
+}
+.user_bar {
+	display: flex;
+	align-items: center;
+	margin-left: 25px;
+}
+.user_bar img {
+	border-radius: 100px;
+}
+.user_name {
+	font-size: 20px;
+	padding-left: 10px;
+}
+.user_data {
+	font-size: 20px;
+	color: gray;
+}
+.post_main {
+	display: flex;
+	flex-direction: column;
+	width: 47vw;
+}
+.post_main img {
+	margin: 0 auto;
+}
+.post_main__content {
+	font-size: 19px;
+	padding-left: 25px;
+}
+
+.post_footer {
+	display: flex;
+}
+
+.span {
+	font-size: 20px;
+	padding-left: 10px;
+}
+
+.post_Like {
+	margin: 5px 15px 0 15px;
+}
+.post_comments {
+	margin: 5px 0px 0 15px;
+}
+.hr {
+	margin: 1% 28% 1% 25%;
+}
+
+.Like {
+	cursor: pointer;
+	font-size: 20px;
+}
+.comments {
+	cursor: pointer;
+	font-size: 20px;
+}
+.filledLike{
+	color: red;
+	font-size: 20px;
+}
