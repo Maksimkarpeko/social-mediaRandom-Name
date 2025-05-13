@@ -1,6 +1,9 @@
-import { CommentOutlined, HeartOutlined,HeartFilled } from '@ant-design/icons';
+import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
 import { CardType } from '@shared/lib/types';
 import style from '@shared/styles/ui/card.module.css';
+import { useState } from 'react';
+import { postSlice } from '../../features/posts/module/reduce';
+import { useAppDispatch } from '../../providers/store/hooks';
 export const CardPost = ({
 	userImg,
 	userName,
@@ -10,7 +13,26 @@ export const CardPost = ({
 	postLike,
 	postComments,
 	isLiked,
+	postId,
+	getLike,
+	deleteLike,
 }: CardType) => {
+	const dispatch = useAppDispatch();
+	const [isLike, setIsLike] = useState<boolean>(isLiked || false);
+	const [count, setCount] = useState<number>(postLike);
+	const handleLike = async () => {
+		setIsLike(true);
+		setCount(prev => prev + 1);
+		dispatch(postSlice.actions.targgetLike({ isLike, postId }));
+		await getLike();
+	};
+	const handleUnLike = async () => {
+		setIsLike(false);
+		setCount(prev => prev - 1);
+		dispatch(postSlice.actions.targgetLike({ isLike, postId }));
+		await deleteLike();
+	};
+
 	return (
 		<>
 			<div className={style.container}>
@@ -25,8 +47,15 @@ export const CardPost = ({
 				</div>
 				<div className={style.post_footer}>
 					<div className={style.post_Like}>
-						{isLiked ? <HeartFilled className={style.filledLike} /> : <HeartOutlined className={style.Like} />}
-						<span className={style.span}>{postLike}</span>
+						{isLike ? (
+							<HeartFilled
+								className={style.filledLike}
+								onClick={handleUnLike}
+							/>
+						) : (
+							<HeartOutlined className={style.Like} onClick={handleLike} />
+						)}
+						<span className={style.span}>{count}</span>
 					</div>
 					<div className={style.post_comments}>
 						<CommentOutlined className={style.comments} />

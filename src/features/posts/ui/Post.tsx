@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../providers/store/hooks';
-import { getPost } from '../api/request';
+import { getPost,getLike,deleteLike } from '../api/request';
 import style from '../style/post.module.css';
 import { CardPost } from '@shared/ui/CardPost';
 export const Post = () => {
@@ -9,7 +9,6 @@ export const Post = () => {
 	useEffect(() => {
 		dispatch(getPost());
 	}, []);
-
 	return (
 		<>
 			{posts.map(item => {
@@ -24,6 +23,9 @@ export const Post = () => {
 							postComments={item._count.comments}
 							postLike={item._count.like}
 							isLiked={item.isLiked}
+							postId={item.id}
+							getLike={()=>getLike(item.id!)}
+							deleteLike = {()=>deleteLike(item.id!)}
 						/>
 					</div>
 				);

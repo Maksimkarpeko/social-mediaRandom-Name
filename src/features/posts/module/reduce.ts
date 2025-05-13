@@ -12,6 +12,16 @@ export const postSlice = createSlice({
 		getPost(state, action) {
 			state.posts = action.payload;
 		},
+		targgetLike(state,action){
+			const post = state.posts.find(post => post.id === action.payload.id)
+			if (post){
+				post.isLiked = action.payload.isLiked
+				post._count.like += action.payload.isLiked ? 1 : -1
+			}
+		},
+		clearReducer(state){
+			state.posts = []
+		}
 	},
 });
 export default postSlice.reducer;

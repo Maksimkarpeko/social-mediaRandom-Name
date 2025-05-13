@@ -25,4 +25,7 @@ export type CardType = {
 	postLike:number,
 	postComments:number,
 	isLiked?:boolean,
+	postId?: number,
+	getLike: () => void,
+	deleteLike:()=>void,
 }

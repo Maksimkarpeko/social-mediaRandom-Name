@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../providers/store/hooks';
 import { GetUsers } from '../api/request';
 import style from '../style/user.module.css';
+import { deleteToken } from '@shared/lib/deleteToken';
+import { postSlice } from '../../../features/posts/module/reduce';
 export const UserForNavBar = () => {
 	const [userImg, setUserImg] = useState<string>('');
 	const [userName, setUserName] = useState<string>('');
@@ -12,7 +14,10 @@ export const UserForNavBar = () => {
 	useEffect(() => {
 		dispatch(GetUsers(setUserImg, setUserName));
 	}, []);
-
+	const logOut = () =>{
+		dispatch(postSlice.actions.clearReducer())
+		deleteToken()
+	}
 	return (
 		<>
 			<div className={style.container}>
@@ -21,7 +26,7 @@ export const UserForNavBar = () => {
 				</div>
 				<p className={style.span_name}>{userName}</p>
 				<span className={style.span_log_out}>
-					<Link to={Links.startPage}>
+					<Link to={Links.startPage} onClick={logOut}>
 						Log out
 					</Link>
 				</span>
