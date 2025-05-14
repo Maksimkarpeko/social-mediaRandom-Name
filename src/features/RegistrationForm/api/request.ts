@@ -1,4 +1,4 @@
-import { IRegistrationState } from '@registration/module/typeFormRegistr';
+import { IRegistrationState } from '@features/RegistrationForm/module/typeFormRegistr';
 import {axiosRequest} from '@shared/lib/axiosSeting'
 import axios from 'axios';
 

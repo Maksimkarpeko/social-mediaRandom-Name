@@ -6,10 +6,13 @@ export default defineConfig({
 	plugins: [react()],
 	resolve: {
 		alias: {
-      "@shared":path.resolve(__dirname,"src/shared/"),
-      "@registration":path.resolve(__dirname,"src/features/RegistrationForm"),
-      "@login":path.resolve(__dirname,"src/features/SingForm"),
-			"@leftNavBarHome":path.resolve(__dirname,"src/widgets/leftNavBarHome")
+			"src":path.resolve(__dirname,"src/"),
+      "@widgets":path.resolve(__dirname,"src/widgets/"),
+			"@features":path.resolve(__dirname,"src/features/"),
+			"@entities":path.resolve(__dirname,"src/entities/"),
+			"@shared":path.resolve(__dirname,"src/shared/"),
+			"@page":path.resolve(__dirname,"src/page/"),
+			"@providers":path.resolve(__dirname,"src/providers/"),
     },
 	},
 });

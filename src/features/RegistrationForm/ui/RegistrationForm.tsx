@@ -4,9 +4,9 @@ import {
 	LeftOutlined,
 	UserOutlined,
 } from '@ant-design/icons';
-import { addUser } from '@registration/api/request';
-import { useRegistrForm } from '@registration/lib/hooks/useRegistrForm';
-import { IRegistration } from '@registration/module/typeFormRegistr';
+import { addUser } from '@features/RegistrationForm/api/request';
+import { useRegistrForm } from '@features/RegistrationForm/lib/hooks/useRegistrForm';
+import { IRegistration } from '@features/RegistrationForm/module/typeFormRegistr';
 import { Links } from '@shared/lib/enumForLink';
 import { Button } from '@shared/ui/Button';
 import { ErrorMessage } from '@shared/ui/ErrorMessage';
@@ -14,7 +14,7 @@ import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import style from '../styles/registrationForm.module.css';
+import style from '@features/RegistrationForm/styles/registrationForm.module.css';
 
 export const RegistrationForm = () => {
 	const [error, setError] = useState<string>('');

@@ -1,5 +1,5 @@
 import { axiosRequest } from '@shared/lib/axiosSeting';
-import { AppDispatch } from '../../../providers/store/store';
+import { AppDispatch } from '@providers/store/store';
 import { postSlice } from '../module/reduce';
 import { IPosts } from '../lib/types';
 
@@ -33,6 +33,7 @@ export const getPost = () => {
 export const getLike = async (postId: number) => {
 	try {
 		const res = await axiosRequest.post(`likes/${postId}`)
+		console.log(res);
 	} catch (e) {
 		console.log(e);
 	}
@@ -41,6 +42,7 @@ export const getLike = async (postId: number) => {
 export const deleteLike = async (postId:number) => {
 	try {
 		const res = await axiosRequest.delete(`likes/${postId}`)
+		console.log(res);
 	}catch(e){
 		console.log(e);
 	}

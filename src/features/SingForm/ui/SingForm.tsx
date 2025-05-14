@@ -3,10 +3,10 @@ import {
 	EyeTwoTone,
 	LeftOutlined,
 } from '@ant-design/icons';
-import { singIn } from '@login/api/request';
-import { useLoginForm } from '@login/hooks/useLogin';
-import { ILogin } from '@login/module/typeLogin';
-import style from '@login/style/singForm.module.css';
+import { singIn } from '@features/SingForm/api/request';
+import { useLoginForm } from '@features/SingForm/hooks/useLogin';
+import { ILogin } from '@features/SingForm/module/typeLogin';
+import style from '@features/SingForm/style/singForm.module.css';
 import { Links } from '@shared/lib/enumForLink';
 import { Button } from '@shared/ui/Button';
 import { ErrorMessage } from '@shared/ui/ErrorMessage';

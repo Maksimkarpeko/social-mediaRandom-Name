@@ -1,11 +1,11 @@
 import { Links } from '@shared/lib/enumForLink';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../../providers/store/hooks';
+import { useAppDispatch } from '@providers/store/hooks';
 import { GetUsers } from '../api/request';
 import style from '../style/user.module.css';
 import { deleteToken } from '@shared/lib/deleteToken';
-import { postSlice } from '../../../features/posts/module/reduce';
+import { postSlice } from "@features/posts/module/reduce";
 export const UserForNavBar = () => {
 	const [userImg, setUserImg] = useState<string>('');
 	const [userName, setUserName] = useState<string>('');

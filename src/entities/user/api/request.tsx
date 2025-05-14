@@ -1,5 +1,5 @@
 import { axiosRequest } from '@shared/lib/axiosSeting';
-import { AppDispatch } from '../../../providers/store/store';
+import { AppDispatch } from '@providers/store/store';
 import { userSlice } from '../module/reducer';
 
 export const GetUsers = (

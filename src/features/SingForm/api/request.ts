@@ -1,4 +1,4 @@
-import { ILogin } from '@login/module/typeLogin';
+import { ILogin } from '@features/SingForm/module/typeLogin';
 import { axiosRequest } from '@shared/lib/axiosSeting';
 import axios from 'axios';
 export const singIn = async (

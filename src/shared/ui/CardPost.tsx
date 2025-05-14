@@ -2,8 +2,8 @@ import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
 import { CardType } from '@shared/lib/types';
 import style from '@shared/styles/ui/card.module.css';
 import { useState } from 'react';
-import { postSlice } from '../../features/posts/module/reduce';
-import { useAppDispatch } from '../../providers/store/hooks';
+import { postSlice } from '@features/posts/module/reduce';
+import { useAppDispatch } from '@providers/store/hooks';
 export const CardPost = ({
 	userImg,
 	userName,

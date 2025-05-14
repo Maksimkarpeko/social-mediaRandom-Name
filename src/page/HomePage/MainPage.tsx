@@ -1,11 +1,11 @@
-import { LeftNavBar } from '@leftNavBarHome/index';
+import { LeftNavBar } from '@widgets/leftNavBarHome/index';
 import { useState } from 'react';
-import { HomePage } from '../../widgets/Home/index';
-import { Search } from '../../widgets/search/index';
-import { Create } from '../../widgets/Create/index';
-import { Notifications } from '../../widgets/Notifications/index';
-import { RNavBar } from '../../widgets/rigthNavBar/index';
-import { Profile } from '../../widgets/Profile/index';
+import { HomePage } from '@widgets/Home/index';
+import { Search } from '@widgets/search/index';
+import { Create } from '@widgets/Create/index';
+import { Notifications } from '@widgets/Notifications/index';
+import { RNavBar } from '@widgets/rigthNavBar/index';
+import { Profile } from '@widgets/Profile/index';
 import style from './style/mainPage.module.css'
 export const MainPage = () => {
 	const [current, setCurrent] = useState<string>('');

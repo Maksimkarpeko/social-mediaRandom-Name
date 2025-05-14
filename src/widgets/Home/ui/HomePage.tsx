@@ -1,4 +1,4 @@
-import { Post } from '../../../features/posts/ui/Post'
+import { Post } from '@features/posts/ui/Post'
 import style from "../style/homePage.module.css"
 export const HomePage = () =>{
 	return(

@@ -21,10 +21,13 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "paths": {
+      "src/*":["src/*"],
       "@shared/*":["src/shared/*"],
-      "@registration/*":["src/features/RegistrationForm/*"],
-      "@login/*":["src/features/SingForm/*"],
-      "@leftNavBarHome/*":["src/widgets/leftNavBarHome/*"] 
+      "@widgets/*":["src/widgets/*"],
+      "@features/*":["src/features/*"],
+      "@entities/*":["src/entities/*"],
+      "@page/*":["src/page/*"],
+      "@providers/*":["src/providers/*"]
     }
   },
   "include": ["src"]

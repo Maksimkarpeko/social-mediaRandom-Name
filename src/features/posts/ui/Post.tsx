@@ -1,5 +1,5 @@
-import { useEffect,useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../providers/store/hooks';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '@providers/store/hooks';
 import { getPost,getLike,deleteLike } from '../api/request';
 import style from '../style/post.module.css';
 import { CardPost } from '@shared/ui/CardPost';
