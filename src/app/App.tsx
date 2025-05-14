@@ -6,7 +6,7 @@ import { SingIn } from "@page/SingIn/SingIn";
 import "./GlobalStyle.css";
 import { Provider } from "react-redux";
 import { setupStore } from "@providers/store/store";
-import { StartPage } from "@page/StartPage/StartPage";
+import { StartPage } from "../page/StartPage/StartPage";
 import {Links} from "@shared/lib/enumForLink"
 import { MainPage } from "@page/HomePage/MainPage";
 const router = createBrowserRouter([
