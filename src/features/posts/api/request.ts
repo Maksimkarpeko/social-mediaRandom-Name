@@ -47,3 +47,13 @@ export const deleteLike = async (postId:number) => {
 		console.log(e);
 	}
 }
+export const giveComments = async() => {
+	try {
+		const res = await axiosRequest.post('comments',{
+			message:"s"
+		});
+		console.log(res);
+	}catch(e){
+		console.log(e);
+	}
+}

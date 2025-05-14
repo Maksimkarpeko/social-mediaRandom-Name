@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@providers/store/hooks';
-import { getPost,getLike,deleteLike } from '../api/request';
+import { getPost,getLike,deleteLike, giveComments } from '../api/request';
 import style from '../style/post.module.css';
 import { CardPost } from '@shared/ui/CardPost';
 export const Post = () => {
@@ -11,6 +11,9 @@ export const Post = () => {
 	}, []);
 	return (
 		<>
+			<button onClick={()=>{
+				giveComments();
+			}}>Comments</button>
 			{posts.map(item => {
 				return (
 					<div className={style.container} key={item.id}>
