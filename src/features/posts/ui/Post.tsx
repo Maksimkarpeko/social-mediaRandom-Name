@@ -11,9 +11,6 @@ export const Post = () => {
 	}, []);
 	return (
 		<>
-			<button onClick={()=>{
-				giveComments();
-			}}>Comments</button>
 			{posts.map(item => {
 				return (
 					<div className={style.container} key={item.id}>

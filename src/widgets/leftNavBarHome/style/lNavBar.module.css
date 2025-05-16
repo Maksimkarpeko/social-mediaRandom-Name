@@ -1,7 +1,7 @@
 .container {
 	position: fixed;
-  top: 0;
-  left: 0;
+	top: 0;
+	left: 0;
 	z-index: 1000;
 	display: flex;
 	flex-direction: column;
@@ -12,10 +12,15 @@
 .container img {
 	margin-top: 10px;
 }
-.container > img {
-	margin: 58vh 0 0 10px;
-}
-.container > img:hover {
-	cursor: pointer;
+
+.moon:hover {
 	border-left: 3px solid red;
+	cursor: pointer;
+}
+.container .moon {
+	margin-top: 55vh;
+}
+
+.moon img {
+	margin-left: 10px;
 }

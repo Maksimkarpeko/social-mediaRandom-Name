@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 export const useLoginForm = () => {
 	return useForm<ILogin>({
-		mode: 'onChange',
+		mode: 'onSubmit',
+		reValidateMode: 'onSubmit',
 	});
 };

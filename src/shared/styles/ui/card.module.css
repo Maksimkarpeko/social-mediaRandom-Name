@@ -5,7 +5,7 @@
 .user_bar {
 	display: flex;
 	align-items: center;
-	margin-left: 25px;
+	margin-left: 15px;
 }
 .user_bar img {
 	border-radius: 100px;
@@ -28,7 +28,7 @@
 }
 .post_main__content {
 	font-size: 19px;
-	padding-left: 25px;
+	padding-left: 15px;
 }
 
 .post_footer {

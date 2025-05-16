@@ -51,7 +51,9 @@ export const LeftNavBar: FC<props> = ({ onNavigate, Current }) => {
 					onClick={onNavigate}
 					isActive={Current === 'profile'}
 				/>
-				<img src={moon} alt='moon' width={'25px'} />
+				<div  className={style.moon} >
+					<img src={moon} alt='moon' width={'25px'}/>
+				</div>
 			</div>
 		</>
 	);

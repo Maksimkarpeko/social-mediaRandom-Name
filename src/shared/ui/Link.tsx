@@ -10,7 +10,7 @@ export const Link: FC<LinkType> = ({ img, text, width, onClick,isActive }) => {
 						onClick(text);
 					}
 				}}
-				className={isActive ? style.active : ''}
+				className={`${style.iconWrapper} ${isActive ? style.active : ''}`}
 			>
 				<img src={img} alt='Pictures' width={width} />
 			</div>

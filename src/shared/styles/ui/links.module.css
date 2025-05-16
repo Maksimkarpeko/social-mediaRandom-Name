@@ -8,10 +8,10 @@
 .container img {
 	margin-left: 12px;
 }
-.container img:hover {
-	cursor: pointer;
+.iconWrapper:hover {
 	border-left: 3px solid red;
+	cursor: pointer;
 }
-.active{
+.active {
 	border-left: 3px solid red;
 }
