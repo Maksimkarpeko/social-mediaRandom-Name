@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RegistrationPage } from "@page/RegistrationPage/RegistrationPage";
 import { SingIn } from "@page/SingIn/SingIn";
-import "./GlobalStyle.css";
+import "./globalStyle.css";
 import { Provider } from "react-redux";
 import { setupStore } from "@providers/store/store";
 import { StartPage } from "../page/StartPage/StartPage";
