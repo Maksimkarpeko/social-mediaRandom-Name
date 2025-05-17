@@ -68,7 +68,7 @@
 }
 @media (max-height: 1300px) and (min-height: 700px) {
 	.formRegist {
-		height: 68vh;
+		height: 75vh;
 	}
 }
 @media (max-height: 545px) {
