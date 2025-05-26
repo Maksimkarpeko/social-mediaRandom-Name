@@ -1,3 +1,4 @@
+
 export type InputType = {
 	Placeholder:string,
 	type:string
@@ -25,7 +26,22 @@ export type CardType = {
 	postLike:number,
 	postComments:number,
 	isLiked?:boolean,
+	count?:number,
 	postId?: number,
 	getLike: () => void,
 	deleteLike:()=>void,
+	handleLike?:()=>Promise<void>,
+	handleUnLike?:()=>Promise<void>
+}
+
+export type ModalType = {
+	userImg:string,
+	userName:string,
+	content:string,
+	postImg:string,
+	isLike:boolean,
+	handleUnLike:()=>Promise<void>,
+	handleLike:()=>Promise<void>,
+	count:number,
+	setModuleOpen: React.Dispatch<React.SetStateAction<boolean>>
 }

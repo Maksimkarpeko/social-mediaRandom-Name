@@ -1,9 +1,10 @@
 import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
+import { postSlice } from '@features/posts/module/reduce';
+import { useAppDispatch } from '@providers/store/hooks';
 import { CardType } from '@shared/lib/types';
 import style from '@shared/styles/ui/card.module.css';
 import { useState } from 'react';
-import { postSlice } from '@features/posts/module/reduce';
-import { useAppDispatch } from '@providers/store/hooks';
+import { ModalPost } from './ModalPost';
 export const CardPost = ({
 	userImg,
 	userName,
@@ -20,6 +21,7 @@ export const CardPost = ({
 	const dispatch = useAppDispatch();
 	const [isLike, setIsLike] = useState<boolean>(isLiked || false);
 	const [count, setCount] = useState<number>(postLike);
+	const [modalOpen, setModalOpen] = useState<boolean>(false);
 	const handleLike = async () => {
 		setIsLike(true);
 		setCount(prev => prev + 1);
@@ -58,12 +60,21 @@ export const CardPost = ({
 						<span className={style.span}>{count}</span>
 					</div>
 					<div className={style.post_comments}>
-						<CommentOutlined className={style.comments} />
+						<CommentOutlined
+							className={style.comments}
+							onClick={() => {
+								setModalOpen(true);
+							}}
+						/>
 						<span className={style.span}>{postComments}</span>
 					</div>
 				</div>
 			</div>
-
+			{modalOpen && (
+				<>
+					<ModalPost userImg={userImg} userName={userName} content={content} postImg={postImg} isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} count={count} setModuleOpen={setModalOpen}/>
+				</>
+			)}
 			<hr className={style.hr} />
 		</>
 	);
