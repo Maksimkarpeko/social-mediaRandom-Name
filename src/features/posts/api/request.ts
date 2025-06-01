@@ -32,28 +32,41 @@ export const getPost = () => {
 
 export const getLike = async (postId: number) => {
 	try {
-		const res = await axiosRequest.post(`likes/${postId}`)
+		const res = await axiosRequest.post(`likes/${postId}`);
 		console.log(res);
 	} catch (e) {
 		console.log(e);
 	}
 };
 
-export const deleteLike = async (postId:number) => {
+export const deleteLike = async (postId: number) => {
 	try {
-		const res = await axiosRequest.delete(`likes/${postId}`)
+		const res = await axiosRequest.delete(`likes/${postId}`);
 		console.log(res);
-	}catch(e){
+	} catch (e) {
 		console.log(e);
 	}
-}
-export const giveComments = async() => {
+};
+export const postComments = async (content:string,postId:number | undefined) => {
 	try {
 		const res = await axiosRequest.post('comments',{
-			message:"s"
+			content,
+			postId,
 		});
-		console.log(res);
-	}catch(e){
+		console.log(res.data);
+	} catch (e) {
 		console.log(e);
 	}
-}
+};
+export const getComments = async (postId:number | undefined) => {
+	try {
+		const res = await axiosRequest.get('comments', {
+			params: {
+				postId,
+			},
+		});
+		console.log(res);
+	} catch (e) {
+		console.log(e);
+	}
+};

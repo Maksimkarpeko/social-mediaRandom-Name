@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@providers/store/hooks';
-import { getPost,getLike,deleteLike } from '../api/request';
+import { getPost, getLike, deleteLike, getComments} from '../api/request';
 import style from '../style/post.module.css';
 import { CardPost } from '@shared/ui/CardPost';
 export const Post = () => {
@@ -20,12 +20,13 @@ export const Post = () => {
 							userImg={item.user.image}
 							userName={item.user.username}
 							postImg={item.image}
-							postComments={item._count.comments}
+							postCommentsCount={item._count.comments}
 							postLike={item._count.like}
 							isLiked={item.isLiked}
 							postId={item.id}
-							getLike={()=>getLike(item.id!)}
-							deleteLike = {()=>deleteLike(item.id!)}
+							getLike={() => getLike(item.id!)}
+							deleteLike={() => deleteLike(item.id!)}
+							getComment={() => getComments(item.id)}
 						/>
 					</div>
 				);

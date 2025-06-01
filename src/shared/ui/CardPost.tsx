@@ -12,11 +12,12 @@ export const CardPost = ({
 	content,
 	postImg,
 	postLike,
-	postComments,
+	postCommentsCount,
 	isLiked,
 	postId,
 	getLike,
 	deleteLike,
+	getComment
 }: CardType) => {
 	const dispatch = useAppDispatch();
 	const [isLike, setIsLike] = useState<boolean>(isLiked || false);
@@ -63,16 +64,17 @@ export const CardPost = ({
 						<CommentOutlined
 							className={style.comments}
 							onClick={() => {
+								getComment()
 								setModalOpen(true);
 							}}
 						/>
-						<span className={style.span}>{postComments}</span>
+						<span className={style.span}>{postCommentsCount}</span>
 					</div>
 				</div>
 			</div>
 			{modalOpen && (
 				<>
-					<ModalPost userImg={userImg} userName={userName} content={content} postImg={postImg} isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} count={count} setModuleOpen={setModalOpen}/>
+					<ModalPost userImg={userImg} userName={userName} content={content} postImg={postImg} isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} count={count} setModuleOpen={setModalOpen} postId={postId}/>
 				</>
 			)}
 			<hr className={style.hr} />

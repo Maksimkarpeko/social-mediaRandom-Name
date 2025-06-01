@@ -1,7 +1,16 @@
-import style from '@shared/styles/ui/modalPost.module.css';
-import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
+import {
+	CloseOutlined,
+	CommentOutlined,
+	HeartFilled,
+	HeartOutlined,
+} from '@ant-design/icons';
 import { ModalType } from '@shared/lib/types';
+import style from '@shared/styles/ui/modalPost.module.css';
+import { Comments } from './Comments';
+import { ChangeEvent, useState } from 'react';
+import { postComments } from 'src/features/posts/api/request';
 export const ModalPost = ({
+	postId,
 	userImg,
 	userName,
 	content,
@@ -12,6 +21,17 @@ export const ModalPost = ({
 	count,
 	setModuleOpen,
 }: ModalType) => {
+	const [fieldInput, setFieldInput] = useState<string>('');
+	const closeModel = () => {
+		setModuleOpen(false);
+	};
+	const handChange = (event:ChangeEvent<HTMLInputElement>) => {
+		setFieldInput(event.target.value);
+	}
+	const createComments = () => {
+		postComments(fieldInput,postId);
+		console.log("Комментарий создан");
+	}
 	return (
 		<>
 			<div className={style.modal_backdrop}>
@@ -19,31 +39,41 @@ export const ModalPost = ({
 					<div className={style.modalImgContent}>
 						<img src={postImg} alt='ImgForPost' width={'100%'} />
 					</div>
-					<div>
-						<div>
-							<button
-								onClick={() => {
-									setModuleOpen(false);
-								}}
-							>
-								Закрыть
-							</button>
+					<div className={style.modalContent}>
+						<div className={style.modalUser}>
+							<div className={style.modalUserName}>
+								<div className={style.modalContainerImgUser}>
+									<img src={userImg} alt='User' width={'100%'} />
+								</div>
+								<div>
+									<h2>{userName}</h2>
+								</div>
+							</div>
+							<div className={style.closeCross}>
+								<CloseOutlined onClick={closeModel} />
+							</div>
 						</div>
-						<div>
-							<img src={userImg} alt='User' width={'10%'} />
-							<h2>{userName}</h2>
-						</div>
+
 						<hr />
 						<div>
-							<div>
-								<img src={userImg} alt='User' width={'5%'} />
-								<h2>{userName}</h2>
-								<p>{content}</p>
+							<div className={style.modalComment}>
+								<div className={style.modalCommentName}>
+									<div className={style.modalContainerImgCommentUser}>
+										<img src={userImg} alt='User' width={'80%'} />
+									</div>
+									<div>
+										<h2>{userName}</h2>
+									</div>
+									<div className={style.modalCommentContent}>
+										<span>{content}</span>
+									</div>
+								</div>
+								<Comments />
 							</div>
 						</div>
 						<hr />
-						<div>
-							<div>
+						<div className={style.reactions}>
+							<div className={style.containerLike}>
 								{isLike ? (
 									<HeartFilled
 										className={style.filledLike}
@@ -54,14 +84,14 @@ export const ModalPost = ({
 								)}
 								<span className={style.span}>{count}</span>
 							</div>
-							<div>
-								<CommentOutlined />
+							<div className={style.containerComments}>
+								<CommentOutlined className={style.Comments} />
 							</div>
 						</div>
 						<hr />
 						<div>
-							<input type='text' />
-							<button>Опубликовать</button>
+							<input type='text' onChange={handChange}  value={fieldInput}/>
+							<button onClick={createComments}>Опубликовать</button>
 						</div>
 					</div>
 				</div>

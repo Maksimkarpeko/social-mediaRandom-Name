@@ -24,7 +24,7 @@ export type CardType = {
 	content:string,
 	postImg:string,
 	postLike:number,
-	postComments:number,
+	postCommentsCount:number,
 	isLiked?:boolean,
 	count?:number,
 	postId?: number,
@@ -32,9 +32,11 @@ export type CardType = {
 	deleteLike:()=>void,
 	handleLike?:()=>Promise<void>,
 	handleUnLike?:()=>Promise<void>
+	getComment: () => void
 }
 
 export type ModalType = {
+	postId:number | undefined
 	userImg:string,
 	userName:string,
 	content:string,
