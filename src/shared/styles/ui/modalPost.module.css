@@ -30,7 +30,7 @@
 }
 .modalContainerImgUser {
 	margin-left: 10px;
-	width: 6%;
+	width: 8%;
 }
 .modalContainerImgUser img {
 	border-radius: 100px;
@@ -41,18 +41,28 @@
 	margin-left: 10px;
 }
 .closeCross {
-	margin-left: 100px;
+	margin-left: 30%;
 }
 .modalUser {
 	display: flex;
 	height: 7vh;
+}
+.modalComment {
+	height: 40vh;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.modalComment::-webkit-scrollbar {
+	display: none;
 }
 .modalCommentName {
 	display: flex;
 }
 .modalContainerImgCommentUser {
 	margin-left: 10px;
-	width: 6%;
+	width: 8%;
 }
 .modalContainerImgCommentUser img {
 	border-radius: 100px;
@@ -84,4 +94,41 @@
 }
 .containerLike {
 	margin: 0 10px;
+}
+
+.textarea {
+	flex: 1;
+	min-height: 20px;
+	max-height: 200px;
+	width: 87%;
+	background: transparent;
+	border: none;
+	resize: none;
+	overflow-y: auto;
+	font-size: 14px;
+	line-height: 1.4;
+	padding: 0;
+	outline: none;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+.button:hover {
+	color: #0f1fce;
+}
+.buttonActive {
+	border: none;
+	background-color: #fff;
+	cursor: pointer;
+	font-size: 15px;
+	color: black;
+}
+.buttonNoneActive {
+	color: gray;
+	border: none;
+	background-color: #fff;
+	cursor: pointer;
+	font-size: 15px;
+}
+.dataEntry {
+	display: flex;
 }

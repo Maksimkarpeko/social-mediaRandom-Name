@@ -1,7 +1,7 @@
-import { axiosRequest } from '@shared/lib/axiosSeting';
 import { AppDispatch } from '@providers/store/store';
-import { postSlice } from '../module/reduce';
+import { axiosRequest } from '@shared/lib/axiosSeting';
 import { IPosts } from '../lib/types';
+import { postSlice } from '../module/reduce';
 
 export const getPost = () => {
 	return async (dispatch: AppDispatch) => {
@@ -33,7 +33,6 @@ export const getPost = () => {
 export const getLike = async (postId: number) => {
 	try {
 		const res = await axiosRequest.post(`likes/${postId}`);
-		console.log(res);
 	} catch (e) {
 		console.log(e);
 	}
@@ -42,14 +41,16 @@ export const getLike = async (postId: number) => {
 export const deleteLike = async (postId: number) => {
 	try {
 		const res = await axiosRequest.delete(`likes/${postId}`);
-		console.log(res);
 	} catch (e) {
 		console.log(e);
 	}
 };
-export const postComments = async (content:string,postId:number | undefined) => {
+export const postComments = async (
+	content: string,
+	postId: number | undefined
+) => {
 	try {
-		const res = await axiosRequest.post('comments',{
+		const res = await axiosRequest.post('comments', {
 			content,
 			postId,
 		});
@@ -58,15 +59,17 @@ export const postComments = async (content:string,postId:number | undefined) => 
 		console.log(e);
 	}
 };
-export const getComments = async (postId:number | undefined) => {
-	try {
-		const res = await axiosRequest.get('comments', {
-			params: {
-				postId,
-			},
-		});
-		console.log(res);
-	} catch (e) {
-		console.log(e);
-	}
+export const getComments = (postId: number | undefined) => {
+	return async (dispatch: AppDispatch) => {
+		try {
+			const res = await axiosRequest.get('comments', {
+				params: {
+					postId,
+				},
+			});
+			dispatch(postSlice.actions.getComments(res.data));
+		} catch (e) {
+			console.log(e);
+		}
+	};
 };

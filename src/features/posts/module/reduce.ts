@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IPostState } from '../lib/types';
+import { ICommentsState, IPostState } from '../lib/types';
 
-const initialState: IPostState = {
-	posts: []
+const initialState: IPostState & ICommentsState = {
+	posts: [],
+	comments:[],
 };
 
 export const postSlice = createSlice({
@@ -19,9 +20,9 @@ export const postSlice = createSlice({
 				post._count.like += action.payload.isLiked ? 1 : -1
 			}
 		},
-		// targetComment(state,action){
-		// 	const post = state.posts.find(post => post.id === action.payload.id);
-		// },
+		getComments(state,action) {
+			state.comments = action.payload
+		},
 		clearReducer(state){
 			state.posts = []
 		}

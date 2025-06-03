@@ -26,7 +26,7 @@ export const Post = () => {
 							postId={item.id}
 							getLike={() => getLike(item.id!)}
 							deleteLike={() => deleteLike(item.id!)}
-							getComment={() => getComments(item.id)}
+							getComment={() => dispatch(getComments(item.id))}
 						/>
 					</div>
 				);

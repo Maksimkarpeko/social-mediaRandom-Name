@@ -16,6 +16,16 @@ export interface IPosts {
 	}
 }
 
+export interface IComments {
+	content:string,
+	user:{
+		image:string,
+		username:string
+	}
+}
 export interface IPostState {
 	posts:IPosts[]
+}
+export interface ICommentsState {
+	comments:IComments[]
 }
