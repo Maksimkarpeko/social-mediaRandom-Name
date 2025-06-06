@@ -3,6 +3,8 @@ import {
 	EyeTwoTone,
 	LeftOutlined,
 	UserOutlined,
+	MailOutlined,
+	LockOutlined
 } from '@ant-design/icons';
 import { addUser } from '@features/RegistrationForm/api/request';
 import { useRegistrForm } from '@features/RegistrationForm/lib/hooks/useRegistrForm';
@@ -29,10 +31,10 @@ export const RegistrationForm = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formRegist}>
 				<Link to={Links.startPage} className={style.backToStartPage}>
 					<LeftOutlined />
+					back
 				</Link>
-				<h1>CREATE ACCOUNT</h1>
+				<h1 className={style.h1}>Create your account</h1>
 				<div className={style.form}>
-					<h2>Email</h2>
 					<Controller
 						name='email'
 						control={control}
@@ -49,6 +51,7 @@ export const RegistrationForm = () => {
 									type='email'
 									placeholder='Email'
 									className={style.inputEmail}
+									prefix={<MailOutlined />}
 									{...field}
 								/>
 								{fieldState.error && (
@@ -59,7 +62,6 @@ export const RegistrationForm = () => {
 					/>
 				</div>
 				<div>
-					<h2>UserName</h2>
 					<Controller
 						name='userName'
 						control={control}
@@ -87,7 +89,6 @@ export const RegistrationForm = () => {
 					/>
 				</div>
 				<div>
-					<h2>Password</h2>
 					<Controller
 						name='password'
 						control={control}
@@ -106,6 +107,7 @@ export const RegistrationForm = () => {
 									className={style.inputPassword}
 									type='password'
 									placeholder='password'
+									prefix={<LockOutlined />}
 									iconRender={visible =>
 										visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
 									}

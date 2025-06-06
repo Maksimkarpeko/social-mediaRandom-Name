@@ -5,18 +5,52 @@
 	border: none;
 	border-bottom: 2px solid rgb(118, 118, 118);
 	border-radius: 0;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-radius: 10px;
+	padding: 10px 15px;
+	margin-top: 15px;
+}
+.inputEmail {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+}
+.inputUserName {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+}
+.inputPassword {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+}
+.inputEmail:hover,
+.inputUserName:hover,
+.inputPassword:hover {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(20px) !important;
+}
+.h1 {
+	margin: 0;
 }
 .formRegist {
-	width: 20vw;
-	height: 25vh;
+	height: 10vh;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	padding: 20px 43px;
-	border: 1px solid white;
 	border-radius: 20px;
-	background-color: #fff;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-radius: 40px;
+	padding: 2rem;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+	color: #000;
 }
 .containerLink h2 {
 	display: flex;
@@ -42,7 +76,9 @@
 	text-decoration: none;
 	color: rgb(0, 0, 0);
 	transition: 250ms all;
-	margin-right: 115%;
+	margin-right: 100%;
+	margin-bottom: 10%;
+	display: flex;
 }
 .backToStartPage:hover {
 	color: rgb(188, 184, 184);
@@ -63,12 +99,12 @@
 
 @media (max-height: 699px) {
 	.formRegist {
-		height: 80vh;
+		height: 60vh;
 	}
 }
 @media (max-height: 1300px) and (min-height: 700px) {
 	.formRegist {
-		height: 75vh;
+		height: 50vh;
 	}
 }
 @media (max-height: 545px) {
