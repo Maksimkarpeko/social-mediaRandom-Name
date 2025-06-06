@@ -2,6 +2,8 @@ import {
 	EyeInvisibleOutlined,
 	EyeTwoTone,
 	LeftOutlined,
+	LockOutlined,
+	MailOutlined,
 } from '@ant-design/icons';
 import { singIn } from '@features/SingForm/api/request';
 import { useLoginForm } from '@features/SingForm/hooks/useLogin';
@@ -27,10 +29,10 @@ export const SingForm = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formSing}>
 				<Link to={Links.startPage} className={style.backToStartPage}>
 					<LeftOutlined />
+					back
 				</Link>
-				<h1>LOGIN TO ACCOUNT</h1>
+				<h1>Login on account</h1>
 				<div>
-					<h2>Email</h2>
 					<Controller
 						name='email'
 						control={control}
@@ -47,6 +49,7 @@ export const SingForm = () => {
 									placeholder='Email'
 									className={style.InputEmail}
 									{...field}
+									prefix={<MailOutlined />}
 								/>
 								{fieldState.error && (
 									<ErrorMessage message={fieldState.error.message} />
@@ -56,7 +59,6 @@ export const SingForm = () => {
 					/>
 				</div>
 				<div>
-					<h2>Password</h2>
 					<Controller
 						name='password'
 						control={control}
@@ -66,6 +68,7 @@ export const SingForm = () => {
 								<Input.Password
 									className={style.InputPassword}
 									placeholder='password'
+									prefix={<LockOutlined />}
 									iconRender={visible =>
 										visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
 									}
