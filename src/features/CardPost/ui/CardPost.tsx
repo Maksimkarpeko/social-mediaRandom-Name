@@ -5,42 +5,36 @@ import { useCardPost } from '../hooks/useCardPost';
 import { CardType } from '../lib/type';
 import style from '../style/card.module.css';
 export const CardPost = ({
-	userImg,
-	userName,
-	data,
-	content,
-	postImg,
-	postCommentsCount,
-	isLiked,
-	postLike,
-	postId,
+	post,
 	getLike,
 	deleteLike,
 	getComment,
 }: CardType) => {
+	const { id, content, isLiked, image, user, _count } = post;
+	const like = _count.like;
 	const [modalOpen, setModalOpen] = useState<boolean>(false);
 	const { isLike, count, handleLike, handleUnLike, onClickComments } =
 		useCardPost({
 			isLiked,
-			postLike,
+			like,
 			getLike,
 			deleteLike,
 			getComment,
-			postId,
-			count: postLike,
+			id,
+			count: like,
 			setModalOpen,
 		});
 	return (
 		<>
 			<div className={style.container}>
 				<div className={style.user_bar}>
-					<img src={userImg} alt='userImg' width={'6%'} />
-					<span className={style.user_name}>{userName}</span>
-					<span className={style.user_data}>{data}</span>
+					<img src={user.image} alt='userImg' width={'6%'} />
+					<span className={style.user_name}>{user.username}</span>
+					<span className={style.user_data}></span>
 				</div>
 				<div className={style.post_main}>
 					<p className={style.post_main__content}>{content}</p>
-					<img src={postImg} alt='' width={'100%'} />
+					<img src={image} alt='image' width={'100%'} />
 				</div>
 				<div className={style.post_footer}>
 					<div className={style.post_Like}>
@@ -59,23 +53,23 @@ export const CardPost = ({
 							className={style.comments}
 							onClick={onClickComments}
 						/>
-						<span className={style.span}>{postCommentsCount}</span>
+						<span className={style.span}>{_count.comments}</span>
 					</div>
 				</div>
 			</div>
 			{modalOpen && (
 				<>
 					<ModalPost
-						userImg={userImg}
-						userName={userName}
+						userImg={user.image}
+						userName={user.username}
 						content={content}
-						postImg={postImg}
+						postImg={image}
 						isLike={isLike}
+						count={count}
 						handleLike={handleLike}
 						handleUnLike={handleUnLike}
-						count={count}
 						setModuleOpen={setModalOpen}
-						postId={postId}
+						postId={id}
 					/>
 				</>
 			)}

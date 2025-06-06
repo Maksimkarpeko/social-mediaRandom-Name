@@ -4,26 +4,26 @@ import { useState } from 'react';
 import { IUseCardPost } from '../lib/type';
 export const useCardPost = ({
 	isLiked,
-	postLike,
-	postId,
+	like,
+	id,
 	getLike,
 	deleteLike,
 	getComment,
 	setModalOpen,
 }: IUseCardPost) => {
 	const [isLike, setIsLike] = useState<boolean>(isLiked || false);
-	const [count, setCount] = useState<number>(postLike);
+	const [count, setCount] = useState<number>(like);
 	const dispatch = useAppDispatch();
 	const handleLike = async () => {
 		setIsLike(true);
 		setCount(prev => prev + 1);
-		dispatch(postSlice.actions.targgetLike({ isLike, postId }));
+		dispatch(postSlice.actions.targgetLike({ isLike, id }));
 		await getLike();
 	};
 	const handleUnLike = async () => {
 		setIsLike(false);
 		setCount(prev => prev - 1);
-		dispatch(postSlice.actions.targgetLike({ isLike, postId }));
+		dispatch(postSlice.actions.targgetLike({ isLike, id }));
 		await deleteLike();
 	};
 	const onClickComments = () => {
