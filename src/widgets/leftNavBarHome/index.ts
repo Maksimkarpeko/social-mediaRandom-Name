@@ -1,0 +1,1 @@
+export {LeftNavBar} from "@widgets/leftNavBarHome/ui/NavBar"

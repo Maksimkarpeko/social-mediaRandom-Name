@@ -1,0 +1,26 @@
+.container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	background: rgb(242, 243, 245);
+	width: 3vw;
+	height: 100%;
+}
+.container img {
+	margin-top: 10px;
+}
+
+.moon:hover {
+	border-left: 3px solid red;
+	cursor: pointer;
+}
+.container .moon {
+	margin-top: 55vh;
+}
+
+.moon img {
+	margin-left: 10px;
+}

@@ -3,10 +3,12 @@ import {
 	EyeTwoTone,
 	LeftOutlined,
 	UserOutlined,
+	MailOutlined,
+	LockOutlined
 } from '@ant-design/icons';
-import { addUser } from '@registration/api/request';
-import { useRegistrForm } from '@registration/lib/hooks/useRegistrForm';
-import { IRegistration } from '@registration/module/typeFormRegistr';
+import { addUser } from '@features/RegistrationForm/api/request';
+import { useRegistrForm } from '@features/RegistrationForm/lib/hooks/useRegistrForm';
+import { IRegistration } from '@features/RegistrationForm/module/typeFormRegistr';
 import { Links } from '@shared/lib/enumForLink';
 import { Button } from '@shared/ui/Button';
 import { ErrorMessage } from '@shared/ui/ErrorMessage';
@@ -14,7 +16,7 @@ import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import style from '../styles/RegistrationForm.module.css';
+import style from '@features/RegistrationForm/styles/registrationForm.module.css';
 
 export const RegistrationForm = () => {
 	const [error, setError] = useState<string>('');
@@ -25,14 +27,14 @@ export const RegistrationForm = () => {
 	};
 
 	return (
-		<>
+		<div className={style.div}>
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formRegist}>
-				<Link to={Links.home} className={style.backToStartPage}>
+				<Link to={Links.startPage} className={style.backToStartPage}>
 					<LeftOutlined />
+					back
 				</Link>
-				<h1>CREATE ACCOUNT</h1>
+				<h1 className={style.h1}>Create your account</h1>
 				<div className={style.form}>
-					<h2>Email</h2>
 					<Controller
 						name='email'
 						control={control}
@@ -49,6 +51,7 @@ export const RegistrationForm = () => {
 									type='email'
 									placeholder='Email'
 									className={style.inputEmail}
+									prefix={<MailOutlined />}
 									{...field}
 								/>
 								{fieldState.error && (
@@ -59,7 +62,6 @@ export const RegistrationForm = () => {
 					/>
 				</div>
 				<div>
-					<h2>UserName</h2>
 					<Controller
 						name='userName'
 						control={control}
@@ -87,7 +89,6 @@ export const RegistrationForm = () => {
 					/>
 				</div>
 				<div>
-					<h2>Password</h2>
 					<Controller
 						name='password'
 						control={control}
@@ -106,6 +107,7 @@ export const RegistrationForm = () => {
 									className={style.inputPassword}
 									type='password'
 									placeholder='password'
+									prefix={<LockOutlined />}
 									iconRender={visible =>
 										visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
 									}
@@ -128,6 +130,6 @@ export const RegistrationForm = () => {
 				{success && <p>User created</p>}
 				{error && <p className={style.error}>{error}</p>}
 			</form>
-		</>
+		</div>
 	);
 };

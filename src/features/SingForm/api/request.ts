@@ -1,9 +1,9 @@
-import { ILogin } from '@login/module/typeLogin';
+import { ILogin } from '@features/SingForm/module/typeLogin';
 import { axiosRequest } from '@shared/lib/axiosSeting';
 import axios from 'axios';
-
 export const singIn = async (
 	data: ILogin,
+	navigate: (path:string) => void,
 	setSuccess: (success: boolean) => void,
 	setError: (error: string) => void
 ) => {
@@ -16,6 +16,7 @@ export const singIn = async (
 			localStorage.setItem('token', res.data.access_token);
 			setSuccess(true);
 			setError('');
+			navigate("/home");
 		}
 	} catch (err: unknown) {
 		if (axios.isAxiosError(err) && err.response) {

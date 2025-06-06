@@ -1,0 +1,115 @@
+.InputEmail,
+.InputPassword {
+	width: 285px;
+	border: none;
+	border-bottom: 2px solid rgb(118, 118, 118);
+	border-radius: 0;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-radius: 10px;
+	padding: 10px 15px;
+	margin-top: 15px;
+}
+.InputEmail {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+}
+.InputPassword {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+}
+.InputEmail:hover,
+.InputPassword:hover {
+	background: rgba(255, 255, 255, 0.2) !important;
+	backdrop-filter: blur(20px) !important;
+}
+.h1 {
+	margin: 0;
+}
+.containerLink h2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 83vh;
+	font-size: 50px;
+}
+
+.formSing {
+	height: 10vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 43px;
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-radius: 40px;
+	padding: 2rem;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+	color: #000;
+}
+.inputPassword {
+	margin-bottom: 1.25rem;
+}
+.link {
+	text-decoration: none;
+	color: rgb(255, 0, 0);
+	transition: 500ms all;
+}
+.link:hover {
+	border-bottom: 2px solid rgb(255, 0, 0);
+	transform: scale(1.05);
+}
+.error {
+	color: red;
+}
+.backToStartPage {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+	transition: 250ms all;
+	margin-right: 100%;
+	margin-bottom: 10%;
+	display: flex;
+}
+.backToStartPage:hover {
+	color: rgb(188, 184, 184);
+}
+
+.div {
+	background: url(../../../shared/assets/image13.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+@media (max-width: 768px) {
+	.containerLink {
+		display: none;
+	}
+}
+@media (max-height: 699px) {
+	.formSing {
+		height: 80vh;
+	}
+}
+@media (max-height: 1300px) and (min-height: 700px) {
+	.formSing {
+		height: 45vh;
+	}
+}
+@media (max-height: 545px) {
+	.formSing {
+		height: 100vh;
+	}
+}

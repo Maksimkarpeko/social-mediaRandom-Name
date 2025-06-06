@@ -2,36 +2,37 @@ import {
 	EyeInvisibleOutlined,
 	EyeTwoTone,
 	LeftOutlined,
+	LockOutlined,
+	MailOutlined,
 } from '@ant-design/icons';
-import { singIn } from '@login/api/request';
-import { useLoginForm } from '@login/hooks/useLogin';
-import { ILogin } from '@login/module/typeLogin';
-import style from '@login/style/SingForm.module.css';
+import { singIn } from '@features/SingForm/api/request';
+import { useLoginForm } from '@features/SingForm/hooks/useLogin';
+import { ILogin } from '@features/SingForm/module/typeLogin';
+import style from '@features/SingForm/style/singForm.module.css';
 import { Links } from '@shared/lib/enumForLink';
 import { Button } from '@shared/ui/Button';
 import { ErrorMessage } from '@shared/ui/ErrorMessage';
 import { Input } from 'antd';
 import { useState } from 'react';
 import { Controller, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export const SingForm = () => {
 	const [error, setError] = useState<string>('');
 	const [success, setSuccess] = useState<boolean>(false);
 	const { control, handleSubmit } = useLoginForm();
-
+	const navigate = useNavigate();
 	const onSubmit: SubmitHandler<ILogin> = (data: ILogin) => {
-		singIn(data, setSuccess, setError);
+		singIn(data, navigate, setSuccess, setError);
 	};
-
 	return (
-		<>
+		<div className={style.div}>
 			<form onSubmit={handleSubmit(onSubmit)} className={style.formSing}>
-				<Link to={Links.home} className={style.backToStartPage}>
+				<Link to={Links.startPage} className={style.backToStartPage}>
 					<LeftOutlined />
+					back
 				</Link>
-				<h1>LOGIN TO ACCOUNT</h1>
+				<h1>Login on account</h1>
 				<div>
-					<h2>Email</h2>
 					<Controller
 						name='email'
 						control={control}
@@ -48,6 +49,7 @@ export const SingForm = () => {
 									placeholder='Email'
 									className={style.InputEmail}
 									{...field}
+									prefix={<MailOutlined />}
 								/>
 								{fieldState.error && (
 									<ErrorMessage message={fieldState.error.message} />
@@ -57,7 +59,6 @@ export const SingForm = () => {
 					/>
 				</div>
 				<div>
-					<h2>Password</h2>
 					<Controller
 						name='password'
 						control={control}
@@ -67,6 +68,7 @@ export const SingForm = () => {
 								<Input.Password
 									className={style.InputPassword}
 									placeholder='password'
+									prefix={<LockOutlined />}
 									iconRender={visible =>
 										visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
 									}
@@ -89,6 +91,6 @@ export const SingForm = () => {
 				{error && <p className={style.error}>{error}</p>}
 				{success && <p>successful login</p>}
 			</form>
-		</>
+		</div>
 	);
 };

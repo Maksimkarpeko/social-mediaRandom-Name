@@ -1,22 +1,24 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RegistrationPage } from '../page/RegistrationPage/RegistrationPage';
-import { SingIn } from '../page/SingIn/SingIn';
-import './GlobalStyle.css';
-import { Provider } from 'react-redux';
-import { setupStore } from '../providers/store/store';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RegistrationPage } from "@page/RegistrationPage/RegistrationPage";
+import { SingIn } from "@page/SingIn/SingIn";
+import "./globalStyle.css";
+import { Provider } from "react-redux";
+import { setupStore } from "@providers/store/store";
 import { StartPage } from "../page/StartPage/StartPage";
 import {Links} from "@shared/lib/enumForLink"
+import { MainPage } from "@page/HomePage/MainPage";
 const router = createBrowserRouter([
-	{path:Links.home,element:<StartPage />},
+	{path:Links.startPage,element:<StartPage />},
 	{ path: Links.registration, element: <RegistrationPage /> },
 	{ path: Links.login, element: <SingIn /> },
+	{ path: Links.home, element: <MainPage />}
 ]);
 
 export const store = setupStore();
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<Provider store={store}>
 			<RouterProvider router={router} />

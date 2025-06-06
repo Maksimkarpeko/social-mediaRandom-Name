@@ -1,12 +1,12 @@
 import { Links } from '@shared/lib/enumForLink';
 import { Button } from '@shared/ui/Button';
 import { Link } from 'react-router-dom';
-import style from './style/StartPage.module.css';
+import style from "./styleStartPage.module.css"
 export const StartPage = () => {
 	return (
-		<>
+		<div className={style.div}>
 			<div className={style.containerPage}>
-				<h2>WELCOME TO LINKUP</h2>
+				<h2>Welcome to linkup</h2>
 				<span>Do you have account?</span>
 				<Link to={Links.registration} className={style.link}>
 					<Button text='Registration with email' anotherСlass={style.button} />
@@ -16,6 +16,6 @@ export const StartPage = () => {
 				</Link>			
 
 			</div>
-		</>
+		</div>
 	);
 };

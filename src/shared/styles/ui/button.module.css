@@ -1,5 +1,6 @@
 .button {
-	@apply bg-red-700 text-white py-2 px-3 rounded border-none my-3;
+	@apply bg-red-500 text-white py-2 px-3 rounded border-none my-3;
+	border-radius: 15px;
 	width: 285px;
 	cursor: pointer;
 	transition: 500ms all;

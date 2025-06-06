@@ -1,0 +1,21 @@
+.containerComment {
+	display: flex;
+	margin: 15px 0 15px 10px;
+}
+.containerUser {
+	display: flex;
+}
+.containerUser h2 {
+	font-size: 20px;
+	margin-top: 5px;
+}
+.containerUserImg {
+	margin-right: 10px;
+}
+.containerUserImg img {
+	border-radius: 100px;
+}
+.containerContent {
+	padding: 5px 0 0 10px;
+}
+

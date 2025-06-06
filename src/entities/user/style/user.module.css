@@ -1,0 +1,29 @@
+.container {
+	position: fixed;
+  top: 0;
+  right: 0;
+	display: flex;
+	width: 20vw;
+}
+.img {
+	border-radius: 100%;
+}
+.span_name {
+	margin-right: 5%;
+}
+
+.containerImg {
+	margin-right: 7%;
+	width: 15%;
+}
+.span_log_out{
+	margin-top: 15px;
+}
+.span_log_out a {
+	text-decoration: none;
+	color: blue;
+}
+.span_log_out a:hover {
+	@apply text-blue-500;
+	border-bottom: 1px solid rgb(59 130 246 / var(--tw-text-opacity, 1));
+}

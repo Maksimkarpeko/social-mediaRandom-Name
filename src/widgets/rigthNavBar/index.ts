@@ -1,0 +1,1 @@
+export {RNavBar} from './rigthNavBar/ui/NavBar.tsx'

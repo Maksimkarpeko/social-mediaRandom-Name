@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import style from '../styles/ui/ErrorMessage.module.css'
+import style from '../styles/ui/errorMessage.module.css'
 export const ErrorMessage: FC<{ message?: string }> = ({ message }) => {
 	return (
 		<>

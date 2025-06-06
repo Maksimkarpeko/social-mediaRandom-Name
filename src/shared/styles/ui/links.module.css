@@ -1,0 +1,17 @@
+.container {
+	display: flex;
+}
+.container span {
+	cursor: pointer;
+	margin: 5px 0 0 10px;
+}
+.container img {
+	margin-left: 12px;
+}
+.iconWrapper:hover {
+	border-left: 3px solid red;
+	cursor: pointer;
+}
+.active {
+	border-left: 3px solid red;
+}
