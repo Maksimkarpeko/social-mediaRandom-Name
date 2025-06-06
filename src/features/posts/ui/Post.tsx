@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@providers/store/hooks';
-import { getPost, getLike, deleteLike, getComments} from '../api/request';
+import { useEffect } from 'react';
+import { CardPost } from '@features/CardPost/index';
+import { deleteLike, getComments, getLike, getPost } from '../api/request';
 import style from '../style/post.module.css';
-import { CardPost } from '@shared/ui/CardPost';
 export const Post = () => {
 	const dispatch = useAppDispatch();
 	const { posts } = useAppSelector(select => select.postReduce);
@@ -23,7 +23,7 @@ export const Post = () => {
 							postCommentsCount={item._count.comments}
 							postLike={item._count.like}
 							isLiked={item.isLiked}
-							postId={item.id}
+							postId={item.id!}
 							getLike={() => getLike(item.id!)}
 							deleteLike={() => deleteLike(item.id!)}
 							getComment={() => dispatch(getComments(item.id))}

@@ -4,12 +4,10 @@ import {
 	HeartFilled,
 	HeartOutlined,
 } from '@ant-design/icons';
-import { ModalType } from '@shared/lib/types';
-import style from '@shared/styles/ui/modalPost.module.css';
-import { ChangeEvent, useState } from 'react';
-import { getComments, getPost, postComments } from 'src/features/posts/api/request';
-import { useAppDispatch } from 'src/providers/store/hooks';
-import { Comments } from './Comments';
+import style from '../style/modalPost.module.css';
+import { ModalType } from 'src/shared/lib/types';
+import { Comments } from '@shared/ui/Comments';
+import { useModalPost } from '../hooks/useModalPost';
 export const ModalPost = ({
 	postId,
 	userImg,
@@ -22,26 +20,11 @@ export const ModalPost = ({
 	count,
 	setModuleOpen,
 }: ModalType) => {
-	const [fieldInput, setFieldInput] = useState<string>('');
-	const [isActiveInput, setIsActiveInput] = useState<boolean>(false);
-	const dispatch = useAppDispatch();
-	const closeModel = () => {
-		setModuleOpen(false);
-	};
-	const handChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-		setFieldInput(event.target.value);
-		if (event.target.value.length > 0) {
-			setIsActiveInput(true);
-		} else{
-			setIsActiveInput(false);
-		}
-	};
-	const createComments = async () => {
-		await postComments(fieldInput, postId);
-		setFieldInput('');
-		dispatch(getComments(postId));
-		dispatch(getPost())
-	};
+	const { isActiveInput, fieldInput, closeModel, handChange, createComments } =
+		useModalPost({
+			setModuleOpen,
+			postId,
+		});
 	return (
 		<>
 			<div className={style.modal_backdrop}>

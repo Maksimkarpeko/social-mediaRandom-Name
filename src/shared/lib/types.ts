@@ -17,23 +17,6 @@ export type LinkType = {
 	isActive?: boolean,
 }
 
-export type CardType = {
-	userImg:string,
-	userName:string,
-	data?:number,
-	content:string,
-	postImg:string,
-	postLike:number,
-	postCommentsCount:number,
-	isLiked?:boolean,
-	count?:number,
-	postId?: number,
-	getLike: () => void,
-	deleteLike:()=>void,
-	handleLike?:()=>Promise<void>,
-	handleUnLike?:()=>Promise<void>
-	getComment: () => void
-}
 
 export type ModalType = {
 	postId:number | undefined
