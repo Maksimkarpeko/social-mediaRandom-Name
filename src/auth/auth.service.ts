@@ -4,7 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { SignInDto, SignUpDto } from 'src/auth/dto';
+import { SignInDto, SignUpDto, RefreshTokenDto } from 'src/auth/dto';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { AccessToken, JwtPayload } from 'src/auth/types';
@@ -31,7 +31,7 @@ export class AuthService {
 
     const { id, email, username } = user;
 
-    return this.signToken({ sub: id, email, username });
+    return this.signTokens({ sub: id, email, username });
   }
 
   async signUp(signUpDto: SignUpDto): Promise<AccessToken> {
@@ -56,15 +56,75 @@ export class AuthService {
 
     const { id, email, username } = user;
 
-    return this.signToken({ sub: id, email, username });
+    return this.signTokens({ sub: id, email, username });
   }
 
-  async signToken(payload: JwtPayload): Promise<AccessToken> {
-    return {
-      access_token: await this.jwtService.signAsync(payload, {
-        expiresIn: '365d',
+  async refreshTokens(refreshTokenDto: RefreshTokenDto): Promise<AccessToken> {
+    try {
+      const payload = await this.jwtService.verifyAsync(
+        refreshTokenDto.refresh_token,
+        {
+          secret: this.config.get('REFRESH_TOKEN_SECRET'),
+        },
+      );
+
+      const user = await this.usersService.findOneById(payload.sub);
+
+      if (!user || !user.refreshToken) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      const isValid = await bcrypt.compare(
+        refreshTokenDto.refresh_token,
+        user.refreshToken,
+      );
+      if (!isValid) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      const { id, email, username } = user;
+
+      return this.signTokens({ sub: id, email, username });
+    } catch {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+  }
+
+  async signTokens(payload: JwtPayload): Promise<AccessToken> {
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwtService.signAsync(payload, {
+        expiresIn: '15m',
         secret: this.config.get('TOKEN_SECRET'),
       }),
+      this.jwtService.signAsync(payload, {
+        expiresIn: '7d',
+        secret: this.config.get('REFRESH_TOKEN_SECRET'),
+      }),
+    ]);
+
+    await this.updateRefreshToken(payload.sub, refreshToken);
+
+    return {
+      access_token: accessToken,
+      refresh_token: refreshToken,
     };
+  }
+
+  async updateRefreshToken(
+    userId: number,
+    refreshToken: string,
+  ): Promise<void> {
+    const hash = await bcrypt.hash(refreshToken, 10);
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { refreshToken: hash },
+    });
+  }
+
+  async logout(userId: number): Promise<void> {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { refreshToken: null },
+    });
   }
 }

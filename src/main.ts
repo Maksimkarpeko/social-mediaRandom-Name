@@ -2,11 +2,16 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SeedsService } from './seeds/seeds.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.enableCors();
+
+  // Run database seeds
+  const seedsService = app.get(SeedsService);
+  await seedsService.runSeeds();
 
   // Swagger setup
   const config = new DocumentBuilder()

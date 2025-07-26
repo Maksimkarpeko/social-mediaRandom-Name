@@ -11,6 +11,7 @@ import { LikesModule } from './likes/likes.module';
 import { FollowsModule } from './follows/follows.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ConversationsModule } from './conversations/conversations.module';
+import { SeedsModule } from './seeds/seeds.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ConversationsModule } from './conversations/conversations.module';
     FollowsModule,
     NotificationsModule,
     ConversationsModule,
+    SeedsModule,
   ],
 })
 export class AppModule {}

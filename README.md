@@ -31,9 +31,11 @@ Next generate prisma schema:
 $ npx prisma generate
 ```
 
-And apply migrations
+And apply migrations (if npx does not work, use the direct node command):
 ```bash
-$ npx prisma migrate dev
+$ npx prisma migrate dev 
+Or
+$ node ./node_modules/prisma/build/index.js migrate dev --name <migration_name>
 ```
 
 Then start the project on the local server with the command:
@@ -41,7 +43,3 @@ Then start the project on the local server with the command:
 ```bash
 $ npm run start:dev
 ```
-
-and you can test api here - http://localhost:8000/
-
-and you use swagger here - http://localhost:8000/api

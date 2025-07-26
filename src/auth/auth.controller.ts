@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
-import { SignInDto, SignUpDto } from 'src/auth/dto';
+import { SignInDto, SignUpDto, RefreshTokenDto } from 'src/auth/dto';
 import { AccessToken, AccessTokenDto } from 'src/auth/types';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
@@ -37,5 +37,22 @@ export class AuthController {
   @ApiBody({ type: SignUpDto })
   signUp(@Body() signUpDto: SignUpDto): Promise<AccessToken> {
     return this.authService.signUp(signUpDto);
+  }
+
+  @Post('refresh')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Refresh access and refresh tokens' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns new access and refresh tokens',
+    type: AccessTokenDto,
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorized - Invalid refresh token',
+  })
+  @ApiBody({ type: RefreshTokenDto })
+  refresh(@Body() refreshTokenDto: RefreshTokenDto): Promise<AccessToken> {
+    return this.authService.refreshTokens(refreshTokenDto);
   }
 }
