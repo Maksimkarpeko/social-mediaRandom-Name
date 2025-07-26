@@ -18,10 +18,15 @@ import { JwtGuard } from 'src/common/guards';
 import { GetUser } from 'src/common/decorators';
 import { FollowsService } from 'src/follows/follows.service';
 import { UserWithStatus } from 'src/users/types';
-import { EditUserDto } from 'src/users/dto/edit-user.dto';
+import { EditUserDto, UserWithFollowingDto } from 'src/users/dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/config';
 import { getImageUrl } from 'src/common/helpers';
+import {
+  PaginationDto,
+  PaginationResult,
+  PaginationResponseDto,
+} from 'src/common/types';
 import {
   ApiTags,
   ApiOperation,
@@ -72,16 +77,33 @@ export class UsersController {
   @UseGuards(JwtGuard)
   @Get()
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Get all followed users' })
+  @ApiOperation({ summary: 'Get all users with pagination' })
+  @ApiQuery({
+    name: 'page',
+    required: false,
+    description: 'Page number (starts from 1)',
+    example: 1,
+  })
+  @ApiQuery({
+    name: 'limit',
+    required: false,
+    description: 'Number of items per page',
+    example: 10,
+  })
   @ApiResponse({
     status: 200,
-    description: 'Returns users that the current user follows',
+    description: 'Returns paginated list of users',
+    type: PaginationResponseDto<UserWithFollowingDto>,
   })
-  async findAll(@GetUser() currentUser: User) {
-    const users = await this.usersService.findAll();
+  async findAll(
+    @Query() paginationDto: PaginationDto,
+    @GetUser() currentUser: User,
+  ): Promise<PaginationResult<User & { isFollowing: boolean }>> {
+    const paginatedUsers =
+      await this.usersService.findAllWithPagination(paginationDto);
 
     const usersWithFollowingStatus = await Promise.all(
-      users.map(async (user) => {
+      paginatedUsers.data.map(async (user) => {
         const isFollowing = !!(await this.followsService.findOne({
           followerId: user.id,
           followingId: currentUser.id,
@@ -90,7 +112,52 @@ export class UsersController {
       }),
     );
 
-    return usersWithFollowingStatus.filter((user) => user.isFollowing);
+    return {
+      data: usersWithFollowingStatus,
+      pagination: paginatedUsers.pagination,
+    };
+  }
+
+  @UseGuards(JwtGuard)
+  @Get('following')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Get all followed users with pagination' })
+  @ApiQuery({
+    name: 'page',
+    required: false,
+    description: 'Page number (starts from 1)',
+    example: 1,
+  })
+  @ApiQuery({
+    name: 'limit',
+    required: false,
+    description: 'Number of items per page',
+    example: 10,
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns paginated list of followed users',
+    type: PaginationResponseDto<UserWithFollowingDto>,
+  })
+  async findAllFollowing(
+    @Query() paginationDto: PaginationDto,
+    @GetUser() currentUser: User,
+  ): Promise<PaginationResult<User & { isFollowing: boolean }>> {
+    const paginatedUsers =
+      await this.usersService.findAllFollowingWithPagination(
+        paginationDto,
+        currentUser.id,
+      );
+
+    const usersWithFollowingStatus = paginatedUsers.data.map((user) => ({
+      ...user,
+      isFollowing: true, // These users are already followed by current user
+    }));
+
+    return {
+      data: usersWithFollowingStatus,
+      pagination: paginatedUsers.pagination,
+    };
   }
 
   @Patch()

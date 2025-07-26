@@ -8,6 +8,7 @@ import { User } from '@prisma/client';
 import { SignUpDto } from 'src/auth/dto';
 import { EditUserData } from 'src/users/types';
 import { FollowsService } from 'src/follows/follows.service';
+import { PaginationDto, PaginationResult } from 'src/common/types';
 
 @Injectable()
 export class UsersService {
@@ -40,6 +41,90 @@ export class UsersService {
 
   findAll(): Promise<User[]> {
     return this.prisma.user.findMany();
+  }
+
+  async findAllWithPagination(
+    paginationDto: PaginationDto,
+  ): Promise<PaginationResult<User>> {
+    const { page = 1, limit = 10 } = paginationDto;
+    const skip = (page - 1) * limit;
+
+    const [users, total] = await Promise.all([
+      this.prisma.user.findMany({
+        skip,
+        take: limit,
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }),
+      this.prisma.user.count(),
+    ]);
+
+    const totalPages = Math.ceil(total / limit);
+    const hasNext = page < totalPages;
+    const hasPrev = page > 1;
+
+    return {
+      data: users,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNext,
+        hasPrev,
+      },
+    };
+  }
+
+  async findAllFollowingWithPagination(
+    paginationDto: PaginationDto,
+    currentUserId: number,
+  ): Promise<PaginationResult<User>> {
+    const { page = 1, limit = 10 } = paginationDto;
+    const skip = (page - 1) * limit;
+
+    // Get users that the current user follows
+    const followingUsers = await this.prisma.user.findMany({
+      where: {
+        followers: {
+          some: {
+            followerId: currentUserId,
+          },
+        },
+      },
+      skip,
+      take: limit,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    const totalFollowing = await this.prisma.user.count({
+      where: {
+        followers: {
+          some: {
+            followerId: currentUserId,
+          },
+        },
+      },
+    });
+
+    const totalPages = Math.ceil(totalFollowing / limit);
+    const hasNext = page < totalPages;
+    const hasPrev = page > 1;
+
+    return {
+      data: followingUsers,
+      pagination: {
+        page,
+        limit,
+        total: totalFollowing,
+        totalPages,
+        hasNext,
+        hasPrev,
+      },
+    };
   }
 
   findOneByEmail(email: string): Promise<User> {
